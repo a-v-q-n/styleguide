@@ -1,0 +1,30 @@
+{
+  "name": "styleguide",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "exports": "node scripts/build-exports.mjs",
+    "dev": "npm run exports && astro dev",
+    "build": "npm run exports && astro build && node scripts/smoke-dist.mjs",
+    "preview": "astro preview",
+    "check": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "gate": "npm run check && npm run format:check && npm run build"
+  },
+  "dependencies": {
+    "astro": "^5.16.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@tailwindcss/vite": "^4.1.17",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3"
+  }
+}

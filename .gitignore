@@ -1,0 +1,12 @@
+node_modules
+dist
+.astro
+.env
+.DS_Store
+
+# Exports générés depuis brand/ — la source de vérité est brand/, jamais ces copies.
+public/tokens.css
+public/tokens.json
+public/llms.txt
+public/doctrine/
+src/styles/tokens.css
