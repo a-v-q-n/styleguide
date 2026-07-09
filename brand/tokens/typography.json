@@ -1,0 +1,18 @@
+{
+  "families": {
+    "serif": "\"Instrument Serif\", serif",
+    "display": "\"Anton\", sans-serif",
+    "sans": "\"Geist\", sans-serif",
+    "mono": "\"Geist Mono\", monospace"
+  },
+  "floorPx": 32,
+  "scale": {
+    "hero": { "family": "serif", "web": "clamp(2.5rem, 6vw, 4.5rem)", "canvas1080": [140, 190], "leading": 1.02 },
+    "titre": { "family": "serif", "web": "clamp(2rem, 4vw, 3.25rem)", "canvas1080": [90, 130], "leading": 1.05 },
+    "corps": { "family": "serif", "web": "clamp(1.25rem, 2.2vw, 1.6rem)", "canvas1080": [56, 80], "leading": 1.35 },
+    "display": { "family": "display", "web": "clamp(3rem, 9vw, 7rem)", "canvas1080": [300, 440], "transform": "uppercase", "leading": 0.95 },
+    "appui": { "family": "sans", "web": "1.0625rem", "canvas1080": [40, 52], "weight": 500, "leading": 1.5 },
+    "eyebrow": { "family": "mono", "web": "0.8125rem", "canvas1080": [32, 40], "transform": "uppercase", "tracking": "0.22em", "weight": 600 },
+    "meta": { "family": "mono", "web": "0.75rem", "canvas1080": [32, 32], "transform": "uppercase", "tracking": "0.14em", "weight": 500 }
+  }
+}

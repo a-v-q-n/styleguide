@@ -1,0 +1,4 @@
+{
+  "vermillon": "radial-gradient(ellipse 82% 44% at 34% 42%, rgba(224, 84, 43, 0.18) 0%, rgba(224, 84, 43, 0.06) 46%, rgba(224, 84, 43, 0) 78%)",
+  "vignette": "radial-gradient(ellipse 78% 74% at 50% 44%, transparent 52%, rgba(0, 0, 0, 0.36) 100%)"
+}

@@ -1,0 +1,17 @@
+{
+  "base": {
+    "paper": "#FAF8F3",
+    "ink": "#211C17",
+    "vermillon": "#E0542B",
+    "grey": "#7A726A",
+    "greyNight": "#CBC4BA",
+    "filet": "#E7E1D8"
+  },
+  "worlds": {
+    "ardoise": "#46647A",
+    "ambre": "#C89B5A",
+    "sauge": "#71805F",
+    "argile": "#BC8272",
+    "prune": "#5F5069"
+  }
+}

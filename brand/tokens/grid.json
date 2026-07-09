@@ -1,0 +1,4 @@
+{
+  "clair": { "color": "rgba(33, 28, 23, 0.04)", "step": "46px" },
+  "nocturne": { "color": "rgba(250, 248, 243, 0.055)", "step": "120px" }
+}
