@@ -2,8 +2,8 @@
 
 La direction artistique des images générées (IA ou photo) de la marque. L'univers : le monde d'un
 indépendant, décalé de deux degrés vers le futur, photographié comme un film 35 mm des années 70.
-Crédible d'abord, futur ensuite, rétro dans le rendu. Références : *Her* (le futur chaleureux),
-*Severance* (cadres tenus, rétro-bureau), *Foundation* (colorimétrie en paires désaturées),
+Crédible d'abord, futur ensuite, rétro dans le rendu. Références : _Her_ (le futur chaleureux),
+_Severance_ (cadres tenus, rétro-bureau), _Foundation_ (colorimétrie en paires désaturées),
 pellicule Cinestill 800T (la halation).
 
 ## Le grade commun (obligatoire, chaque image)
@@ -23,13 +23,13 @@ Une recette par visuel, choisie selon le sujet. Chaque monde est une **paire dom
 contrepoint** — c'est le contrepoint qui rend la couleur intelligente ; un plan monochrome est un
 plan raté.
 
-| Monde | Lumière | Dominante | Contrepoint |
-|-------|---------|-----------|-------------|
-| `ardoise` | nuit, heure bleue | bleus d'ombre `#46647A` | tungstène ambré |
-| `ambre` | matin, soleil rasant | ors chauds `#C89B5A` | une ombre ardoise froide |
-| `sauge` | plein jour, végétal | verts doux `#71805F` | bois et terre argile |
-| `argile` | intérieur doré, humain | terracotta/peau `#BC8272` | crème et blancs cassés |
-| `prune` | crépuscule, focus | violets sourds `#5F5069` | une lueur chaude (lampe, écran) |
+| Monde     | Lumière                | Dominante                 | Contrepoint                     |
+| --------- | ---------------------- | ------------------------- | ------------------------------- |
+| `ardoise` | nuit, heure bleue      | bleus d'ombre `#46647A`   | tungstène ambré                 |
+| `ambre`   | matin, soleil rasant   | ors chauds `#C89B5A`      | une ombre ardoise froide        |
+| `sauge`   | plein jour, végétal    | verts doux `#71805F`      | bois et terre argile            |
+| `argile`  | intérieur doré, humain | terracotta/peau `#BC8272` | crème et blancs cassés          |
+| `prune`   | crépuscule, focus      | violets sourds `#5F5069`  | une lueur chaude (lampe, écran) |
 
 Nommer explicitement la paire dans le prompt (ex. `warm amber golden light dominates, counterpointed
 by one cool slate-blue shadow area`). Jamais deux mondes dominants dans un même plan.

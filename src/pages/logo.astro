@@ -1,0 +1,197 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import DoctrineLink from "../components/DoctrineLink.astro";
+import Logo from "../components/Logo.astro";
+
+const dos = [
+  "Une seule couleur à la fois — encre, noir ou papier.",
+  "La zone de protection tenue tout autour.",
+  "Un placement franc, aligné sur la grille.",
+  "La variante encre sur le papier de la marque.",
+];
+const donts = [
+  "Recolorer en vermillon ou en bicolore.",
+  "Étirer, incliner, ajouter une ombre ou un contour.",
+  "Poser sur un fond chargé sans contraste.",
+  "Descendre sous 24 px de côté.",
+];
+---
+
+<Base title="Logo" description="Le monogramme AVQN : variantes, zone de protection, usage.">
+  <div class="wrap page-head">
+    <p class="eyebrow">Logo</p>
+    <h1 class="type-hero">Le monogramme.</h1>
+    <p class="lede">
+      Des aplats francs, une seule couleur, beaucoup de netteté. La DA suffit souvent à signer — le
+      logo se pose franc quand il est là.
+    </p>
+  </div>
+
+  <Section eyebrow="01 · Variantes" title="Une couleur à la fois">
+    <div class="variants">
+      <figure class="variant on-paper">
+        <div class="mark ink"><Logo size={112} /></div>
+        <figcaption>
+          <strong>Encre</strong> — sur papier, la version accordée à la charte.
+          <a href="/assets/logo/logo-encre.svg" download>logo-encre.svg</a>
+        </figcaption>
+      </figure>
+      <figure class="variant on-paper">
+        <div class="mark black"><Logo size={112} /></div>
+        <figcaption>
+          <strong>Noir</strong> — la version officielle.
+          <a href="/assets/logo/logo-noir.svg" download>logo-noir.svg</a>
+        </figcaption>
+      </figure>
+      <figure class="variant on-ink">
+        <div class="mark paper"><Logo size={112} /></div>
+        <figcaption>
+          <strong>Papier</strong> — sur nocturne, le monogramme en crème.
+        </figcaption>
+      </figure>
+    </div>
+    <DoctrineLink slug="logo" />
+  </Section>
+
+  <Section eyebrow="02 · Zone de protection" title="De l'air, tout autour">
+    <figure class="clearspace">
+      <div class="cs-box">
+        <div class="cs-pad">
+          <div class="mark ink"><Logo size={96} /></div>
+        </div>
+      </div>
+      <figcaption>
+        Un vide égal à la hauteur d'un module du monogramme, libre de tout texte, filet ou bord.
+        Taille minimale : 24 px de côté.
+      </figcaption>
+    </figure>
+  </Section>
+
+  <Section eyebrow="03 · Usage" title="Do / Don't">
+    <div class="dodont">
+      <ul class="do">
+        {dos.map((d) => <li>{d}</li>)}
+      </ul>
+      <ul class="dont">
+        {donts.map((d) => <li>{d}</li>)}
+      </ul>
+    </div>
+    <DoctrineLink slug="logo" />
+  </Section>
+
+  <style>
+    .page-head {
+      padding-top: clamp(var(--space-lg), 8vh, var(--space-xl));
+    }
+    .page-head .type-hero {
+      margin-top: var(--space-md);
+    }
+    .lede {
+      margin-top: var(--space-lg);
+      max-width: 50ch;
+      font-family: var(--font-serif);
+      font-size: var(--text-corps);
+      line-height: 1.4;
+    }
+    .variants {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-lg);
+    }
+    .variant {
+      margin: 0;
+      display: grid;
+      gap: var(--space-md);
+    }
+    .mark {
+      display: grid;
+      place-items: center;
+      height: 200px;
+      border-radius: var(--radius-md);
+    }
+    .on-paper .mark {
+      background: var(--color-paper);
+      border: 1px solid var(--color-filet);
+    }
+    .on-ink .mark {
+      background: var(--color-ink);
+    }
+    .ink {
+      color: var(--color-ink);
+    }
+    .black {
+      color: #000000;
+    }
+    .paper {
+      color: var(--color-paper);
+    }
+    figcaption {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    figcaption strong {
+      color: var(--fg);
+      font-weight: 600;
+    }
+    figcaption a {
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+    }
+    .clearspace {
+      margin: 0;
+      display: grid;
+      gap: var(--space-md);
+      max-width: 420px;
+    }
+    .cs-box {
+      background: var(--color-paper);
+      border: 1px solid var(--color-filet);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+    .cs-pad {
+      border: 1px dashed color-mix(in srgb, var(--color-vermillon) 55%, transparent);
+      padding: 40px;
+      display: grid;
+      place-items: center;
+    }
+    .dodont {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+    }
+    .dodont ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.7em;
+    }
+    .dodont li {
+      padding-left: 1.6em;
+      position: relative;
+      color: var(--fg);
+    }
+    .do li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .dont li::before {
+      content: "✕";
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+    @media (max-width: 640px) {
+      .dodont {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+    }
+  </style>
+</Base>

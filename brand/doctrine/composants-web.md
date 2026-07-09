@@ -9,11 +9,11 @@ seul vermillon, beaucoup d'air) et des rôles sémantiques (`--bg`, `--fg`, `--m
 Trois variantes, une seule forme : radius `md` (6 px), padding généreux, label en Geist
 demi-gras. Le vermillon est réservé à **l'action principale** — un seul bouton primaire par vue.
 
-| Variante | Fond | Texte | Bordure | Usage |
-|----------|------|-------|---------|-------|
-| **Primaire** | `--accent` (vermillon) | papier | — | l'action qui compte, une par vue |
-| **Secondaire** | transparent | `--fg` | 1 px `--fg` | actions de second rang |
-| **Fantôme** | transparent | `--muted` | — | actions tertiaires, discrètes |
+| Variante       | Fond                   | Texte     | Bordure     | Usage                            |
+| -------------- | ---------------------- | --------- | ----------- | -------------------------------- |
+| **Primaire**   | `--accent` (vermillon) | papier    | —           | l'action qui compte, une par vue |
+| **Secondaire** | transparent            | `--fg`    | 1 px `--fg` | actions de second rang           |
+| **Fantôme**    | transparent            | `--muted` | —           | actions tertiaires, discrètes    |
 
 États (les trois variantes) :
 

@@ -1,0 +1,184 @@
+---
+import Base from "../layouts/Base.astro";
+import Logo from "../components/Logo.astro";
+
+const sections = [
+  {
+    href: "/fondations",
+    label: "Fondations",
+    note: "Couleur, typographie, espacement, grilles, lueurs.",
+  },
+  {
+    href: "/composants",
+    label: "Composants",
+    note: "Boutons, cartes, gestes-signature — clair et nocturne.",
+  },
+  { href: "/logo", label: "Logo", note: "Le monogramme, ses variantes, sa zone de protection." },
+  {
+    href: "/da-image",
+    label: "DA image",
+    note: "« L'anticipation douce » : mondes, vermillon sémantique.",
+  },
+];
+---
+
+<Base>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Livre de marque · AVQN</p>
+      <h1 class="type-hero hero-title">
+        La beauté d'AVQN, <em>documentée pour être répliquée</em>.
+      </h1>
+      <p class="hero-lede">
+        Une seule source — couleur, typographie, composants, direction artistique — pour
+        homogénéiser tous les projets. Pensée pour l'œil qui l'inspecte comme pour l'agent qui la
+        réplique.
+      </p>
+      <div class="hero-actions">
+        <a href="/fondations" class="btn btn--primary">Explorer les fondations</a>
+        <a href="/llms.txt" class="btn btn--secondary">/llms.txt — pour les agents</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap map">
+    {
+      sections.map((s) => (
+        <a href={s.href} class="card map-card">
+          <span class="map-label type-titre">{s.label}</span>
+          <span class="map-note">{s.note}</span>
+          <span class="map-go" aria-hidden="true">
+            →
+          </span>
+        </a>
+      ))
+    }
+  </section>
+
+  <section class="wrap agents">
+    <div class="card card--raised agents-card">
+      <div class="agents-mark" aria-hidden="true"><Logo size={40} /></div>
+      <div>
+        <p class="eyebrow">À visée des agents</p>
+        <p class="agents-lede">
+          Cette charte n'est pas qu'à regarder : elle s'adresse d'abord aux IA qui produisent nos
+          visuels, nos pages et nos vidéos.
+        </p>
+        <ul class="agents-list">
+          <li>
+            <a href="/llms.txt">/llms.txt</a> — toute la charte en un fichier, point d'entrée.
+          </li>
+          <li><a href="/tokens.json">/tokens.json</a> — les valeurs exactes, parseables.</li>
+          <li>
+            <a href="/tokens.css">/tokens.css</a> — les variables prêtes à importer dans un projet web.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .hero {
+      padding-top: clamp(var(--space-xl), 12vh, var(--space-2xl));
+    }
+    .hero-title {
+      margin-top: var(--space-lg);
+      max-width: 16ch;
+    }
+    .hero-lede {
+      margin-top: var(--space-lg);
+      max-width: 46ch;
+      font-family: var(--font-serif);
+      font-size: var(--text-corps);
+      line-height: 1.4;
+      color: var(--fg);
+    }
+    .hero-actions {
+      margin-top: var(--space-xl);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+
+    .map {
+      margin-top: var(--space-2xl);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+    }
+    .map-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-areas: "label go" "note go";
+      align-items: start;
+      gap: 0.4em 0;
+      text-decoration: none;
+      color: var(--fg);
+      transition:
+        border-color 0.15s ease,
+        transform 0.1s ease;
+    }
+    .map-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .map-label {
+      grid-area: label;
+    }
+    .map-note {
+      grid-area: note;
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 34ch;
+    }
+    .map-go {
+      grid-area: go;
+      align-self: center;
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+
+    .agents {
+      margin-top: var(--space-lg);
+    }
+    .agents-card {
+      display: flex;
+      gap: var(--space-lg);
+      align-items: flex-start;
+    }
+    .agents-mark {
+      color: var(--accent);
+      flex: none;
+      padding-top: 0.25em;
+    }
+    .agents-lede {
+      margin: 0.4em 0 0;
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      line-height: 1.4;
+      max-width: 52ch;
+    }
+    .agents-list {
+      margin: var(--space-md) 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.5em;
+      color: var(--muted);
+    }
+    .agents-list a {
+      font-family: var(--font-mono);
+      font-size: 0.95em;
+    }
+
+    @media (max-width: 640px) {
+      .map {
+        grid-template-columns: 1fr;
+      }
+      .agents-card {
+        flex-direction: column;
+        gap: var(--space-md);
+      }
+    }
+  </style>
+</Base>

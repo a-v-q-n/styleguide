@@ -18,9 +18,9 @@ On ne remplit pas un espace : on y pose ce qui compte et on laisse l'air faire l
 Le fond de marque n'est jamais un aplat nu : il porte un **quadrillage** discret, le papier
 millimétré d'AVQN. Il change avec l'ambiance.
 
-| Ambiance | Couleur du trait | Pas |
-|----------|------------------|-----|
-| Clair | encre ~4 % (`--grid-clair-color`) | 46 px (`--grid-clair-step`) |
+| Ambiance | Couleur du trait                       | Pas                             |
+| -------- | -------------------------------------- | ------------------------------- |
+| Clair    | encre ~4 % (`--grid-clair-color`)      | 46 px (`--grid-clair-step`)     |
 | Nocturne | crème ~5,5 % (`--grid-nocturne-color`) | 120 px (`--grid-nocturne-step`) |
 
 Le rôle `--grid-color` / `--grid-step` bascule automatiquement avec le thème. Le quadrillage se pose

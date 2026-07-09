@@ -1,0 +1,29 @@
+---
+// Lien « pour l'IA » vers la doctrine brute d'un domaine.
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+---
+
+<a class="doclink" href={`/doctrine/${slug}.md`}>
+  <span aria-hidden="true">↳</span> pour l'IA — doctrine/{slug}.md
+</a>
+
+<style>
+  .doclink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-top: var(--space-lg);
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .doclink:hover {
+    color: var(--accent);
+  }
+</style>

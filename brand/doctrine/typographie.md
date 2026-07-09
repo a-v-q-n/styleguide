@@ -15,15 +15,15 @@ typographie est le premier geste de marque — avant la couleur, avant la mise e
 
 ## Les rôles
 
-| Rôle | Famille | Usage |
-|------|---------|-------|
-| `hero` | serif | le titre qui ouvre un écran |
-| `titre` | serif | les têtes de section |
-| `corps` | serif | le texte long qui porte |
-| `display` | Anton | le hook, le chiffre-choc (UPPERCASE) |
-| `appui` | Geist | sous-titres, légendes, corps d'UI |
+| Rôle      | Famille    | Usage                                          |
+| --------- | ---------- | ---------------------------------------------- |
+| `hero`    | serif      | le titre qui ouvre un écran                    |
+| `titre`   | serif      | les têtes de section                           |
+| `corps`   | serif      | le texte long qui porte                        |
+| `display` | Anton      | le hook, le chiffre-choc (UPPERCASE)           |
+| `appui`   | Geist      | sous-titres, légendes, corps d'UI              |
 | `eyebrow` | Geist Mono | label de catégorie (UPPERCASE, tracking large) |
-| `meta` | Geist Mono | mentions, crédits, index |
+| `meta`    | Geist Mono | mentions, crédits, index                       |
 
 ## Deux expressions d'une même échelle
 

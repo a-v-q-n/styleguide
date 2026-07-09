@@ -1,0 +1,49 @@
+---
+import CopyToken from "./CopyToken.astro";
+interface Props {
+  hex: string;
+  name: string;
+  role?: string;
+}
+const { hex, name, role } = Astro.props;
+---
+
+<figure class="swatch">
+  <div class="chip" style={`--c:${hex}`}></div>
+  <figcaption>
+    <span class="sw-name">{name}</span>
+    {role && <span class="sw-role">{role}</span>}
+    <CopyToken value={hex} />
+  </figcaption>
+</figure>
+
+<style>
+  .swatch {
+    margin: 0;
+    display: grid;
+    gap: 0.6em;
+  }
+  .chip {
+    height: 92px;
+    border-radius: var(--radius-md);
+    background: var(--c);
+    border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  }
+  figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35em;
+    align-items: flex-start;
+  }
+  .sw-name {
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg);
+  }
+  .sw-role {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+</style>

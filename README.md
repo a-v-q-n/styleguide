@@ -15,12 +15,12 @@ la répliquent fidèlement (web, visuels, et plus tard motion/son), avec une vit
 
 Une fois en ligne :
 
-| URL | Usage |
-|-----|-------|
-| `/llms.txt` | point d'entrée pour un agent — toute la charte en un fichier |
-| `/tokens.json` | valeurs exactes, parseable |
-| `/tokens.css` | variables CSS à `@import` dans un projet web |
-| `/doctrine/<domaine>.md` | la doctrine brute d'un domaine |
+| URL                      | Usage                                                        |
+| ------------------------ | ------------------------------------------------------------ |
+| `/llms.txt`              | point d'entrée pour un agent — toute la charte en un fichier |
+| `/tokens.json`           | valeurs exactes, parseable                                   |
+| `/tokens.css`            | variables CSS à `@import` dans un projet web                 |
+| `/doctrine/<domaine>.md` | la doctrine brute d'un domaine                               |
 
 ## Développer
 

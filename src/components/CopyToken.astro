@@ -1,0 +1,13 @@
+---
+// Puce copiable — le nom ou la valeur d'un token, cliquable. La signature du site :
+// « la page est la source ». Le handler global vit dans Base.astro.
+interface Props {
+  value: string;
+  label?: string;
+}
+const { value, label = value } = Astro.props;
+---
+
+<button class="copy" type="button" data-copy={value} aria-label={`Copier ${value}`}>
+  <span data-copy-label>{label}</span>
+</button>

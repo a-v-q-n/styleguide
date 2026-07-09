@@ -1,0 +1,191 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import CopyToken from "../components/CopyToken.astro";
+import DoctrineLink from "../components/DoctrineLink.astro";
+---
+
+<Base
+  title="Composants"
+  description="La charte AVQN portée à l'interface : boutons, cartes, gestes-signature, en clair et en nocturne."
+>
+  <div class="wrap page-head">
+    <p class="eyebrow">Composants</p>
+    <h1 class="type-hero">La charte, en interface.</h1>
+    <p class="lede">
+      Tout hérite des rôles sémantiques (<code>--bg</code>, <code>--fg</code>, <code>--accent</code
+      >) : bascule l'ambiance, rien ne change dans le code. Chaque brique porte sa classe,
+      cliquable.
+    </p>
+  </div>
+
+  <Section eyebrow="01 · Boutons" title="Une forme, trois rangs">
+    <div class="row">
+      <button class="btn btn--primary">Explorer</button>
+      <button class="btn btn--secondary">En savoir plus</button>
+      <button class="btn btn--ghost">Plus tard</button>
+      <button class="btn btn--secondary" disabled>Indisponible</button>
+    </div>
+    <div class="classes">
+      <CopyToken value=".btn .btn--primary" />
+      <CopyToken value=".btn .btn--secondary" />
+      <CopyToken value=".btn .btn--ghost" />
+    </div>
+    <p class="note">
+      Un seul primaire vermillon par vue. Focus clavier toujours visible (anneau vermillon), jamais
+      supprimé. Pas d'ombre, pas de dégradé, coins nets.
+    </p>
+    <DoctrineLink slug="composants-web" />
+  </Section>
+
+  <Section eyebrow="02 · Cartes" title="Des surfaces sobres">
+    <div class="row cards">
+      <article class="card">
+        <p class="eyebrow">Recette</p>
+        <h3 class="type-titre">Carte plate</h3>
+        <p class="card-body">Bord fin, radius medium, beaucoup d'air. Le défaut.</p>
+      </article>
+      <article class="card card--raised">
+        <p class="eyebrow">Au-dessus</p>
+        <h3 class="type-titre">Carte surélevée</h3>
+        <p class="card-body">Une ombre basse et chaude quand l'élément doit flotter.</p>
+      </article>
+    </div>
+    <div class="classes">
+      <CopyToken value=".card" />
+      <CopyToken value=".card .card--raised" />
+    </div>
+  </Section>
+
+  <Section eyebrow="03 · Gestes-signature" title="Ce qui signe la marque">
+    <div class="gestes">
+      <div class="geste">
+        <p class="eyebrow">Sous le capot</p>
+        <p class="geste-label">Eyebrow — carré vermillon + label mono</p>
+        <CopyToken value=".eyebrow" />
+      </div>
+      <div class="geste">
+        <hr class="filet" />
+        <p class="geste-label">Filet vermillon — séparateur qui porte</p>
+        <CopyToken value=".filet" />
+      </div>
+      <div class="geste">
+        <p class="type-titre">Un titre à <em>accent italique</em></p>
+        <p class="geste-label">Le fragment qui porte, en italique vermillon</p>
+        <CopyToken value="em / .acc" />
+      </div>
+      <div class="geste">
+        <hr class="rule" />
+        <p class="geste-label">Filet de séparation neutre</p>
+        <CopyToken value=".rule" />
+      </div>
+    </div>
+  </Section>
+
+  <Section eyebrow="04 · Champs & liens" title="Saisie et navigation">
+    <div class="row form-demo">
+      <label class="field">
+        <span class="field-label">Adresse e-mail</span>
+        <input type="email" placeholder="prenom@domaine.ch" />
+      </label>
+      <p class="link-demo">
+        Un <a href="#">lien vermillon</a> souligné, qui fonce au survol.
+      </p>
+    </div>
+    <div class="classes"><CopyToken value=".field" /></div>
+    <DoctrineLink slug="composants-web" />
+  </Section>
+
+  <style>
+    .page-head {
+      padding-top: clamp(var(--space-lg), 8vh, var(--space-xl));
+    }
+    .page-head .type-hero {
+      margin-top: var(--space-md);
+      max-width: 16ch;
+    }
+    .lede {
+      margin-top: var(--space-lg);
+      max-width: 54ch;
+      font-family: var(--font-serif);
+      font-size: var(--text-corps);
+      line-height: 1.4;
+    }
+    .lede code,
+    .page-head code {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      color: var(--accent);
+    }
+    .note {
+      margin-top: var(--space-lg);
+      color: var(--muted);
+      max-width: 60ch;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      align-items: center;
+    }
+    .classes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+    .cards {
+      align-items: stretch;
+    }
+    .cards .card {
+      flex: 1 1 240px;
+    }
+    .card-body {
+      margin: 0.6em 0 0;
+      color: var(--muted);
+    }
+    .gestes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-xl);
+    }
+    .geste {
+      display: grid;
+      gap: 0.7em;
+      justify-items: start;
+      align-content: start;
+    }
+    .geste-label {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .field {
+      display: grid;
+      gap: 0.5em;
+      min-width: 260px;
+    }
+    .field-label {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .field input {
+      font-family: var(--font-sans);
+      font-size: var(--text-appui);
+      color: var(--fg);
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 0.75em 1em;
+    }
+    .field input::placeholder {
+      color: var(--muted);
+    }
+    .link-demo {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+    }
+  </style>
+</Base>

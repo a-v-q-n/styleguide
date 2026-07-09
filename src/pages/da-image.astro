@@ -1,0 +1,203 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import CopyBlock from "../components/CopyBlock.astro";
+import DoctrineLink from "../components/DoctrineLink.astro";
+import color from "../../brand/tokens/color.json";
+
+const grade =
+  "shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border";
+
+const gabarit =
+  "Cinematic editorial photograph, vertical composition + [la scène : sujet, action, moment — dire aussi ce qui est absent] + [la paire du monde : dominante + contrepoint] + [l'objet vermillon et son sens] + [la touche futur discrète] + [le grade commun]";
+
+const worldHex = color.worlds as Record<string, string>;
+const worlds = [
+  { key: "ardoise", light: "nuit, heure bleue", counter: "tungstène ambré des lampes" },
+  { key: "ambre", light: "matin, soleil rasant", counter: "une ombre ardoise froide" },
+  { key: "sauge", light: "plein jour, végétal", counter: "bois et terre argile" },
+  { key: "argile", light: "intérieur doré, humain", counter: "crème et blancs cassés" },
+  { key: "prune", light: "crépuscule, focus", counter: "une lueur chaude (lampe, écran)" },
+];
+---
+
+<Base
+  title="DA image"
+  description="« L'anticipation douce » : la direction artistique des images AVQN — grade 35mm, mondes-couleur, vermillon sémantique."
+>
+  <div class="wrap page-head">
+    <p class="eyebrow">Direction artistique · Image</p>
+    <h1 class="type-hero">« L'anticipation douce ».</h1>
+    <p class="lede">
+      Le monde d'un indépendant, décalé de deux degrés vers le futur, photographié comme un film 35
+      mm des années 70. Crédible d'abord, futur ensuite, rétro dans le rendu.
+    </p>
+  </div>
+
+  <Section eyebrow="01 · Le grade" title="La signature commune">
+    <p class="note">
+      Tout prompt image se termine par le même grade — c'est lui qui unit la banque.
+    </p>
+    <CopyBlock code={grade} />
+    <DoctrineLink slug="da-image" />
+  </Section>
+
+  <Section eyebrow="02 · Les mondes" title="Des recettes de lumière">
+    <p class="note">
+      Une paire par visuel : une dominante et son contrepoint. C'est le contrepoint qui rend la
+      couleur intelligente — un plan monochrome est un plan raté.
+    </p>
+    <div class="worlds">
+      {
+        worlds.map((w) => (
+          <article class="world">
+            <div class="world-chip" style={`--c:${worldHex[w.key]}`} />
+            <div class="world-body">
+              <h3 class="world-name">
+                {w.key} <span class="world-hex">{worldHex[w.key]}</span>
+              </h3>
+              <p class="world-light">{w.light}</p>
+              <p class="world-counter">contrepoint — {w.counter}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section eyebrow="03 · Les règles" title="Vermillon sémantique & touche futur">
+    <div class="rules">
+      <div class="rule-card">
+        <span class="rule-swatch"></span>
+        <h3 class="type-titre">Un vermillon qui désigne</h3>
+        <p>
+          Un seul objet vermillon <code>#E0542B</code> par image, et il désigne ce dont le propos parle
+          : le carnet qu'on ouvre, la diode qui veille. Jamais décoratif.
+        </p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-icon" aria-hidden="true">◵</span>
+        <h3 class="type-titre">Une touche futur discrète</h3>
+        <p>
+          Un détail impossible aujourd'hui, dans le coin de l'image : écran bombé ambré, e-paper,
+          molette intelligente. Black Mirror doux — jamais d'hologramme ni de HUD.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section eyebrow="04 · Le gabarit" title="Écrire un prompt">
+    <CopyBlock code={gabarit} />
+    <p class="note">
+      Peu d'éléments, de l'air, un premier plan travaillé. Aucun texte lisible dans l'image — les
+      mots vivent dans la mise en page. La galerie d'exemples générés arrive.
+    </p>
+    <DoctrineLink slug="da-image" />
+  </Section>
+
+  <style>
+    .page-head {
+      padding-top: clamp(var(--space-lg), 8vh, var(--space-xl));
+    }
+    .page-head .type-hero {
+      margin-top: var(--space-md);
+    }
+    .lede {
+      margin-top: var(--space-lg);
+      max-width: 54ch;
+      font-family: var(--font-serif);
+      font-size: var(--text-corps);
+      line-height: 1.4;
+    }
+    .note {
+      margin-bottom: var(--space-lg);
+      color: var(--muted);
+      max-width: 62ch;
+    }
+    .note:last-child {
+      margin-bottom: 0;
+      margin-top: var(--space-lg);
+    }
+    .worlds {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-lg);
+    }
+    .world {
+      display: flex;
+      gap: var(--space-md);
+      align-items: stretch;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+    .world-chip {
+      flex: none;
+      width: 56px;
+      border-radius: var(--radius-sm);
+      background: var(--c);
+    }
+    .world-name {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      margin: 0;
+      text-transform: capitalize;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5em;
+    }
+    .world-hex {
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+      color: var(--muted);
+      text-transform: none;
+    }
+    .world-light {
+      margin: 0.3em 0 0;
+      color: var(--fg);
+    }
+    .world-counter {
+      margin: 0.2em 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .rules {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+    .rule-card {
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      display: grid;
+      gap: 0.6em;
+      align-content: start;
+    }
+    .rule-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .rule-card code {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      color: var(--accent);
+    }
+    .rule-swatch {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--color-vermillon);
+    }
+    .rule-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+    @media (max-width: 640px) {
+      .rules {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</Base>

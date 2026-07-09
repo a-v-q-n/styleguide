@@ -7,13 +7,7 @@
 //   - public/doctrine/*.md    → la doctrine brute, copiée telle quelle
 // Plain Node ESM, aucune dépendance.
 
-import {
-  readFileSync,
-  writeFileSync,
-  readdirSync,
-  mkdirSync,
-  existsSync,
-} from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync, cpSync } from "node:fs";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -129,25 +123,39 @@ function renderLlms(t, doctrines, siteUrl) {
   const L = [];
   L.push("# Charte AVQN — livre de marque");
   L.push("");
-  L.push("Source unique du design AVQN, à répliquer fidèlement. Ce fichier est le point d'entrée pour un agent.");
+  L.push(
+    "Source unique du design AVQN, à répliquer fidèlement. Ce fichier est le point d'entrée pour un agent.",
+  );
   L.push(`Valeurs exactes : ${siteUrl}/tokens.json · CSS prêt à importer : ${siteUrl}/tokens.css`);
   L.push("");
   L.push("## Non-négociables");
-  L.push("- Contraste chaud : encre sur papier, ou l'inverse en nocturne. Jamais de blanc ni de noir purs.");
-  L.push("- Un seul vermillon par composition, réservé au mot/objet qui porte le sens. Jamais décoratif.");
+  L.push(
+    "- Contraste chaud : encre sur papier, ou l'inverse en nocturne. Jamais de blanc ni de noir purs.",
+  );
+  L.push(
+    "- Un seul vermillon par composition, réservé au mot/objet qui porte le sens. Jamais décoratif.",
+  );
   L.push("- La serif porte le message ; le reste (appuis, labels) recule en gris.");
-  L.push(`- Plancher typographique ${ty.floorPx}px : la discrétion vient du gris et du placement, jamais d'une taille minuscule.`);
+  L.push(
+    `- Plancher typographique ${ty.floorPx}px : la discrétion vient du gris et du placement, jamais d'une taille minuscule.`,
+  );
   L.push("- Beaucoup d'air : peu d'éléments, alignements porteurs de sens.");
   L.push("");
   L.push("## Palette");
   L.push(
     `- papier ${c.paper} · encre ${c.ink} · vermillon ${c.vermillon} · gris ${c.grey} (nocturne ${c.greyNight}) · filet ${c.filet}`,
   );
-  L.push(`- Mondes-couleur (DA image, paires de lumière) : ${Object.entries(w).map(([k, v]) => `${k} ${v}`).join(" · ")}`);
+  L.push(
+    `- Mondes-couleur (DA image, paires de lumière) : ${Object.entries(w)
+      .map(([k, v]) => `${k} ${v}`)
+      .join(" · ")}`,
+  );
   L.push("");
   L.push("## Typographie");
   L.push(`- Familles : ${Object.values(ty.families).join(" · ")}`);
-  L.push(`- Rôles : ${Object.keys(ty.scale).join(", ")} (échelle web fluide + référence canvas 1080 dans tokens.json).`);
+  L.push(
+    `- Rôles : ${Object.keys(ty.scale).join(", ")} (échelle web fluide + référence canvas 1080 dans tokens.json).`,
+  );
   L.push("");
   L.push("## Ambiances");
   L.push("- Clair : fond papier + quadrillage encre léger.");
@@ -161,10 +169,22 @@ function renderLlms(t, doctrines, siteUrl) {
   return L.join("\n");
 }
 
-export function buildExports({ tokensDir, doctrineDir, outSiteCss, outPublicDir, siteUrl = SITE_URL }) {
+export function buildExports({
+  tokensDir,
+  doctrineDir,
+  assetsDir,
+  outSiteCss,
+  outPublicDir,
+  siteUrl = SITE_URL,
+}) {
   const tokens = readTokens(tokensDir);
   const css = renderCss(tokens);
   const files = [];
+
+  // Assets de marque (logo…) servis tels quels : brand/assets → public/assets.
+  if (assetsDir && existsSync(assetsDir)) {
+    cpSync(assetsDir, join(outPublicDir, "assets"), { recursive: true });
+  }
 
   ensureDir(dirname(outSiteCss));
   writeFileSync(outSiteCss, css);
@@ -196,6 +216,7 @@ if (process.argv[1] && import.meta.url === `file://${process.argv[1]}`) {
   const res = buildExports({
     tokensDir: join(root, "brand/tokens"),
     doctrineDir: join(root, "brand/doctrine"),
+    assetsDir: join(root, "brand/assets"),
     outSiteCss: join(root, "src/styles/tokens.css"),
     outPublicDir: join(root, "public"),
   });

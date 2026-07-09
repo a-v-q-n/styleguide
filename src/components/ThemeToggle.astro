@@ -1,0 +1,73 @@
+---
+// Bascule clair ↔ nocturne. Le nocturne est du contenu de marque (deux ambiances),
+// pas du chrome. État persisté ; pas de flash au chargement (script dans Base).
+---
+
+<button class="toggle" type="button" aria-label="Basculer clair / nocturne" data-theme-toggle>
+  <span class="dot" aria-hidden="true"></span>
+  <span class="label" data-toggle-label>Clair</span>
+</button>
+
+<style>
+  .toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55em;
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-pill);
+    padding: 0.5em 0.9em;
+    cursor: pointer;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+  .toggle:hover {
+    color: var(--fg);
+    border-color: var(--fg);
+  }
+  .dot {
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent);
+  }
+  :global(html[data-theme="night"]) .dot {
+    box-shadow: 0 0 10px 1px color-mix(in srgb, var(--accent) 70%, transparent);
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    function label() {
+      return document.documentElement.dataset.theme === "night" ? "Nocturne" : "Clair";
+    }
+    function sync() {
+      document.querySelectorAll("[data-toggle-label]").forEach(function (el) {
+        el.textContent = label();
+      });
+    }
+    sync();
+    document.querySelectorAll("[data-theme-toggle]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var night = document.documentElement.dataset.theme === "night";
+        if (night) {
+          delete document.documentElement.dataset.theme;
+        } else {
+          document.documentElement.dataset.theme = "night";
+        }
+        try {
+          localStorage.setItem("sg-theme", night ? "clair" : "night");
+        } catch (e) {}
+        sync();
+      });
+    });
+  })();
+</script>

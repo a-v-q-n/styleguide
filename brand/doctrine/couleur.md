@@ -16,27 +16,27 @@ d'une chaleur analogique — jamais clinique, jamais froid.
 
 ## La palette
 
-| Token | Hex | Rôle |
-|-------|-----|------|
-| `paper` | `#FAF8F3` | fond clair · texte sur nocturne |
-| `ink` | `#211C17` | encre : texte/titres sur clair · fond nocturne |
-| `vermillon` | `#E0542B` | l'accent unique, porteur de sens |
-| `grey` | `#7A726A` | secondaire sur clair |
-| `greyNight` | `#CBC4BA` | secondaire sur nocturne |
-| `filet` | `#E7E1D8` | filet de séparation (clair) |
+| Token       | Hex       | Rôle                                           |
+| ----------- | --------- | ---------------------------------------------- |
+| `paper`     | `#FAF8F3` | fond clair · texte sur nocturne                |
+| `ink`       | `#211C17` | encre : texte/titres sur clair · fond nocturne |
+| `vermillon` | `#E0542B` | l'accent unique, porteur de sens               |
+| `grey`      | `#7A726A` | secondaire sur clair                           |
+| `greyNight` | `#CBC4BA` | secondaire sur nocturne                        |
+| `filet`     | `#E7E1D8` | filet de séparation (clair)                    |
 
 ## Rôles sémantiques (clair ↔ nocturne)
 
 La marque vit en deux ambiances. On ne code jamais une couleur brute dans une interface : on code un
 **rôle**, et le rôle bascule avec le thème.
 
-| Rôle | Clair | Nocturne |
-|------|-------|----------|
-| `--bg` fond | papier | encre |
-| `--fg` texte | encre | papier |
-| `--muted` secondaire | gris | gris nocturne |
-| `--rule` filet | `filet` | crème 14 % |
-| `--accent` accent | vermillon | vermillon |
+| Rôle                 | Clair     | Nocturne      |
+| -------------------- | --------- | ------------- |
+| `--bg` fond          | papier    | encre         |
+| `--fg` texte         | encre     | papier        |
+| `--muted` secondaire | gris      | gris nocturne |
+| `--rule` filet       | `filet`   | crème 14 %    |
+| `--accent` accent    | vermillon | vermillon     |
 
 Le vermillon ne bascule pas : c'est la constante qui unit les deux mondes.
 

@@ -1,0 +1,397 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Swatch from "../components/Swatch.astro";
+import CopyToken from "../components/CopyToken.astro";
+import DoctrineLink from "../components/DoctrineLink.astro";
+import color from "../../brand/tokens/color.json";
+import typography from "../../brand/tokens/typography.json";
+import space from "../../brand/tokens/space.json";
+import radius from "../../brand/tokens/radius.json";
+import elevation from "../../brand/tokens/elevation.json";
+import grid from "../../brand/tokens/grid.json";
+
+const baseColors = [
+  { key: "paper", name: "papier", role: "fond clair · texte sur nocturne" },
+  { key: "ink", name: "encre", role: "texte sur clair · fond nocturne" },
+  { key: "vermillon", name: "vermillon", role: "l'accent unique, porteur de sens" },
+  { key: "grey", name: "gris", role: "secondaire sur clair" },
+  { key: "greyNight", name: "gris nocturne", role: "secondaire sur nocturne" },
+  { key: "filet", name: "filet", role: "séparateur (clair)" },
+];
+const baseHex = color.base as Record<string, string>;
+const worldNote: Record<string, string> = {
+  ardoise: "nuit, heure bleue",
+  ambre: "matin, soleil rasant",
+  sauge: "plein jour, végétal",
+  argile: "intérieur doré, humain",
+  prune: "crépuscule, focus",
+};
+
+const typeSamples: Record<string, string> = {
+  hero: "La beauté se réplique",
+  titre: "Une seule source de vérité",
+  corps:
+    "Le texte long qui porte le propos, en Instrument Serif, avec de l'air et, quand il faut, un accent italique vermillon.",
+  display: "AVQN",
+  appui: "Un appui en Geist, pour le second niveau.",
+  eyebrow: "Sous le capot",
+  meta: "styleguide.avqn.ch",
+};
+const typeRows = Object.entries(typography.scale).map(([role, def]) => ({
+  role,
+  sample: typeSamples[role],
+  family: def.family.replace(/"/g, "").split(",")[0].trim(),
+  token: `--text-${role}`,
+  varRef: `var(--text-${role})`,
+  canvas: def.canvas1080 ? `${def.canvas1080[0]}–${def.canvas1080[1]} px` : "—",
+}));
+const spaceEntries = Object.entries(space);
+const radiusEntries = Object.entries(radius);
+const elevationEntries = Object.entries(elevation);
+---
+
+<Base
+  title="Fondations"
+  description="Couleur, typographie, espacement, radius, élévation, grilles et lueurs — les tokens du socle AVQN."
+>
+  <div class="wrap page-head">
+    <p class="eyebrow">Fondations</p>
+    <h1 class="type-hero">Le socle, valeur par valeur.</h1>
+    <p class="lede">
+      Chaque token porte son nom : clique une valeur pour la copier. C'est la même source que le
+      site consomme et que les agents lisent.
+    </p>
+  </div>
+
+  <Section eyebrow="01 · Couleur" title="La palette">
+    <div class="grid-swatch">
+      {baseColors.map((c) => <Swatch hex={baseHex[c.key]} name={c.name} role={c.role} />)}
+    </div>
+    <p class="note">Jamais de blanc ni de noir purs. Un seul vermillon par composition.</p>
+
+    <h3 class="type-titre sub">Mondes-couleur</h3>
+    <p class="note">
+      Cinq recettes de lumière pour la DA image — des dominantes de scène, jamais des couleurs d'UI.
+    </p>
+    <div class="grid-swatch">
+      {
+        Object.entries(color.worlds).map(([k, hex]) => (
+          <Swatch hex={hex} name={k} role={worldNote[k]} />
+        ))
+      }
+    </div>
+    <DoctrineLink slug="couleur" />
+  </Section>
+
+  <Section eyebrow="02 · Typographie" title="Quatre voix, une gamme">
+    <div class="specimens">
+      {
+        typeRows.map((r) => (
+          <div class="specimen">
+            <p class={`type-${r.role} specimen-sample`}>{r.sample}</p>
+            <dl class="specimen-meta">
+              <div>
+                <dt>rôle</dt>
+                <dd>{r.role}</dd>
+              </div>
+              <div>
+                <dt>famille</dt>
+                <dd>{r.family}</dd>
+              </div>
+              <div>
+                <dt>token</dt>
+                <dd>
+                  <CopyToken value={r.varRef} label={r.token} />
+                </dd>
+              </div>
+              <div>
+                <dt>canvas 1080</dt>
+                <dd>{r.canvas}</dd>
+              </div>
+            </dl>
+          </div>
+        ))
+      }
+    </div>
+    <p class="note">
+      Plancher {typography.floorPx} px. La serif porte ; l'emphase se dit en italique vermillon.
+    </p>
+    <DoctrineLink slug="typographie" />
+  </Section>
+
+  <Section eyebrow="03 · Espacement" title="Une échelle tenue">
+    <ul class="scale">
+      {
+        spaceEntries.map(([k, v]) => (
+          <li class="scale-row">
+            <span class="scale-bar" style={`width:${v}`} />
+            <CopyToken value={`var(--space-${k})`} label={`--space-${k}`} />
+            <span class="scale-val">{v}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <DoctrineLink slug="layout-grilles" />
+  </Section>
+
+  <Section eyebrow="04 · Radius & élévation" title="Coins nets, ombres basses">
+    <div class="duo">
+      <div>
+        <h3 class="type-titre sub">Radius</h3>
+        <div class="grid-mini">
+          {
+            radiusEntries.map(([k, v]) => (
+              <figure class="mini">
+                <div class="mini-box" style={`border-radius:${v}`} />
+                <figcaption>
+                  <CopyToken value={`var(--radius-${k})`} label={`--radius-${k}`} />
+                  <span class="mini-val">{v}</span>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+      <div>
+        <h3 class="type-titre sub">Élévation</h3>
+        <div class="grid-mini">
+          {
+            elevationEntries.map(([k, v]) => (
+              <figure class="mini">
+                <div class="mini-box elev" style={`box-shadow:${v}`} />
+                <figcaption>
+                  <CopyToken value={`var(--elevation-${k})`} label={`--elevation-${k}`} />
+                  <span class="mini-val">{k}</span>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <DoctrineLink slug="lueurs" />
+  </Section>
+
+  <Section eyebrow="05 · Grilles & lueurs" title="Le papier millimétré, l'encre habitée">
+    <div class="duo">
+      <figure class="demo demo-grid">
+        <div class="demo-canvas grid-clair"></div>
+        <figcaption>
+          <strong>Quadrillage clair</strong>
+          <span>encre {grid.clair.color.replace(/\s/g, "")} · pas {grid.clair.step}</span>
+        </figcaption>
+      </figure>
+      <figure class="demo demo-grid">
+        <div class="demo-canvas grid-nuit"></div>
+        <figcaption>
+          <strong>Nocturne — lueur + vignette</strong>
+          <span>crème {grid.nocturne.color.replace(/\s/g, "")} · pas {grid.nocturne.step}</span>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="note">
+      La lueur vermillon et la vignette ne vivent qu'en nocturne — bascule l'ambiance en haut à
+      droite pour voir tout le site respirer.
+    </p>
+    <DoctrineLink slug="lueurs" />
+  </Section>
+
+  <style>
+    .page-head {
+      padding-top: clamp(var(--space-lg), 8vh, var(--space-xl));
+    }
+    .page-head .type-hero {
+      margin-top: var(--space-md);
+      max-width: 18ch;
+    }
+    .lede {
+      margin-top: var(--space-lg);
+      max-width: 52ch;
+      font-family: var(--font-serif);
+      font-size: var(--text-corps);
+      line-height: 1.4;
+    }
+    .note {
+      margin-top: var(--space-lg);
+      color: var(--muted);
+      max-width: 60ch;
+    }
+    .sub {
+      margin-top: var(--space-xl);
+    }
+
+    .grid-swatch {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .specimens {
+      display: grid;
+      gap: var(--space-xl);
+    }
+    .specimen {
+      display: grid;
+      gap: var(--space-md);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--rule);
+    }
+    .specimen-sample {
+      margin: 0;
+      color: var(--fg);
+      overflow-wrap: anywhere;
+    }
+    .specimen-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md) var(--space-xl);
+      margin: 0;
+    }
+    .specimen-meta div {
+      display: grid;
+      gap: 0.35em;
+    }
+    .specimen-meta dt {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+    .specimen-meta dd {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .scale {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-md);
+    }
+    .scale-row {
+      display: grid;
+      grid-template-columns: 140px auto 1fr;
+      align-items: center;
+      gap: var(--space-md);
+    }
+    .scale-bar {
+      height: 18px;
+      background: var(--accent);
+      border-radius: var(--radius-sm);
+      min-width: 4px;
+    }
+    .scale-val {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+    }
+
+    .duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+    }
+    .grid-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+      margin-top: var(--space-md);
+    }
+    .mini {
+      margin: 0;
+      display: grid;
+      gap: 0.5em;
+    }
+    .mini-box {
+      width: 80px;
+      height: 80px;
+      background: color-mix(in srgb, var(--accent) 16%, var(--bg));
+      border: 1px solid var(--accent);
+    }
+    .mini-box.elev {
+      background: var(--bg);
+      border: 1px solid var(--rule);
+    }
+    .mini figcaption {
+      display: grid;
+      gap: 0.3em;
+      justify-items: start;
+    }
+    .mini-val {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .demo {
+      margin: 0;
+      display: grid;
+      gap: 0.6em;
+    }
+    .demo-canvas {
+      height: 200px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--rule);
+    }
+    .grid-clair {
+      background-color: var(--color-paper);
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          var(--grid-clair-color) 0 1px,
+          transparent 1px var(--grid-clair-step)
+        ),
+        repeating-linear-gradient(
+          90deg,
+          var(--grid-clair-color) 0 1px,
+          transparent 1px var(--grid-clair-step)
+        );
+    }
+    .grid-nuit {
+      position: relative;
+      overflow: hidden;
+      background-color: var(--color-ink);
+      background-image:
+        var(--glow-vermillon),
+        repeating-linear-gradient(
+          0deg,
+          var(--grid-nocturne-color) 0 1px,
+          transparent 1px var(--grid-nocturne-step)
+        ),
+        repeating-linear-gradient(
+          90deg,
+          var(--grid-nocturne-color) 0 1px,
+          transparent 1px var(--grid-nocturne-step)
+        );
+    }
+    .grid-nuit::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--glow-vignette);
+    }
+    .demo figcaption {
+      display: grid;
+      gap: 0.2em;
+    }
+    .demo figcaption strong {
+      font-weight: 600;
+    }
+    .demo figcaption span {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+    }
+
+    @media (max-width: 720px) {
+      .duo {
+        grid-template-columns: 1fr;
+      }
+      .scale-row {
+        grid-template-columns: 90px auto 1fr;
+      }
+    }
+  </style>
+</Base>
