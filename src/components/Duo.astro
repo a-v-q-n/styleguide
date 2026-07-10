@@ -1,0 +1,43 @@
+---
+// Le duo d'ambiances : le même exemple rendu deux fois — dans l'ambiance du
+// site, puis en nocturne forcé ([data-theme="night"] scopé). La preuve que
+// les rôles suffisent : aucun code dédié à une ambiance dans les démos.
+interface Props {
+  demo: any;
+}
+const { demo: Demo } = Astro.props;
+---
+
+<div class="duo">
+  <div class="duo-pane">
+    <p class="type-meta duo-tag">Ambiance du site</p>
+    <Demo />
+  </div>
+  <div class="duo-pane duo-pane--night" data-theme="night">
+    <p class="type-meta duo-tag">Nocturne</p>
+    <Demo />
+  </div>
+</div>
+
+<style>
+  .duo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+    gap: var(--space-md);
+    align-items: stretch;
+  }
+  .duo-pane {
+    /* min-width 0 : sans quoi une table large impose sa largeur au pane
+       et le défilement interne (.demo-scroll) ne peut pas jouer. */
+    min-width: 0;
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+  }
+  .duo-tag {
+    margin: 0 0 var(--space-lg);
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,25 @@
+---
+// Navigation applicative — header d'app (wordmark, sections, actif) + footer.
+---
+
+<div class="demo-nav">
+  <header class="app-bar">
+    <span class="app-wordmark">Médiathèque</span>
+    <nav class="app-nav" aria-label="Sections de la démo">
+      <a href="#" aria-current="page">Galerie</a>
+      <a href="#">Collections</a>
+      <a href="#">Imports</a>
+    </nav>
+  </header>
+  <footer class="app-foot">
+    <span>AVQN · Médiathèque</span>
+    <span>v2.4</span>
+  </footer>
+</div>
+
+<style>
+  .demo-nav {
+    display: grid;
+    gap: var(--space-xl);
+  }
+</style>

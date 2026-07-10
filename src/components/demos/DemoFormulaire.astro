@@ -1,0 +1,64 @@
+---
+// Formulaire — groupes, select, textarea, cases, radios, erreur inline.
+// Nom de groupe radio unique par instance : le duo rend la démo deux fois.
+const uid = Math.random().toString(36).slice(2, 7);
+---
+
+<form class="form" onsubmit="return false">
+  <div class="form-group">
+    <p class="form-group-title">Coordonnées</p>
+    <label class="field">
+      <span class="field-label">Nom</span>
+      <input type="text" placeholder="Manu" />
+    </label>
+    <div class="field field--error">
+      <label class="field-label" for={`email-${uid}`}>Adresse e-mail</label>
+      <input id={`email-${uid}`} type="email" value="manu.avqn" aria-invalid="true" />
+      <p class="field-error">L'adresse doit contenir un @.</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <p class="form-group-title">Diffusion</p>
+    <label class="field">
+      <span class="field-label">Canal</span>
+      <span class="select">
+        <select>
+          <option>Bibliothèque</option>
+          <option>Médiathèque</option>
+          <option>avqn.ch</option>
+        </select>
+      </span>
+    </label>
+    <label class="field">
+      <span class="field-label">Message</span>
+      <textarea rows="4" placeholder="Quelques lignes, pas un roman."></textarea>
+      <span class="field-help">Visible sous le titre de la publication.</span>
+    </label>
+    <label class="check">
+      <input type="checkbox" checked />
+      M'avertir à la publication
+    </label>
+    <div class="demo-radios">
+      <label class="check">
+        <input type="radio" name={`ambiance-${uid}`} checked />
+        Clair
+      </label>
+      <label class="check">
+        <input type="radio" name={`ambiance-${uid}`} />
+        Nocturne
+      </label>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button class="btn btn--primary" type="submit">Envoyer</button>
+    <button class="btn btn--ghost" type="button">Annuler</button>
+  </div>
+</form>
+
+<style>
+  .demo-radios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+</style>

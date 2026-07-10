@@ -1,6 +1,8 @@
 @import "tailwindcss";
 /* tokens.css est généré depuis brand/tokens par scripts/build-exports.mjs (dogfood). */
 @import "./tokens.css";
+/* Les familles de composants de la doctrine (formulaires, tableaux, filtres…). */
+@import "./composants.css";
 
 /* ─────────────────────────────────────────────────────────────────────────
    Base — le socle : ambiances clair/nocturne, quadrillage, lueur, typo.
@@ -173,9 +175,8 @@
     cursor: pointer;
     text-decoration: none;
     transition:
-      background-color 0.15s ease,
-      transform 0.05s ease,
-      filter 0.15s ease;
+      background-color var(--motion-vif) ease,
+      filter var(--motion-vif) ease;
   }
   .btn:active {
     transform: translateY(1px);
@@ -233,8 +234,8 @@
     padding: 0.35em 0.6em;
     cursor: pointer;
     transition:
-      color 0.15s ease,
-      border-color 0.15s ease;
+      color var(--motion-vif) ease,
+      border-color var(--motion-vif) ease;
   }
   .copy:hover {
     color: var(--fg);

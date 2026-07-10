@@ -1,0 +1,41 @@
+---
+// Filtres — recherche, chips (actives inversées), segmented, compteur.
+---
+
+<div class="demo-filtres">
+  <input class="input demo-search" type="search" placeholder="Filtrer les projets…" />
+  <div class="demo-rangee">
+    <button class="chip" aria-pressed="true">En ligne</button>
+    <button class="chip" aria-pressed="true">2026</button>
+    <button class="chip" aria-pressed="false">Brouillons</button>
+    <button class="chip" aria-pressed="false">Archives</button>
+    <span class="type-meta demo-compteur">12 résultats</span>
+  </div>
+  <div class="seg" role="group" aria-label="Période">
+    <button aria-pressed="false">Semaine</button>
+    <button aria-pressed="true">Mois</button>
+    <button aria-pressed="false">Année</button>
+  </div>
+</div>
+
+<style>
+  .demo-filtres {
+    display: grid;
+    gap: var(--space-md);
+    justify-items: start;
+  }
+  .demo-search {
+    width: min(36ch, 100%);
+  }
+  .demo-rangee {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm);
+    width: 100%;
+  }
+  .demo-compteur {
+    margin-inline-start: auto;
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,55 @@
+---
+// Tableau — en-tête meta, filets 1 px, numérique à droite, action fantôme.
+---
+
+<div class="demo-scroll">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Projet</th>
+        <th>Statut</th>
+        <th>Mise à jour</th>
+        <th class="num">Médias</th>
+        <th class="action"><span class="sr-only">Action</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bibliothèque</td>
+        <td><span class="badge badge--vivant">En ligne</span></td>
+        <td>08.07.2026</td>
+        <td class="num">1 240</td>
+        <td class="action"><button class="btn btn--ghost">Ouvrir</button></td>
+      </tr>
+      <tr>
+        <td>Médiathèque</td>
+        <td><span class="badge">Brouillon</span></td>
+        <td>02.07.2026</td>
+        <td class="num">356</td>
+        <td class="action"><button class="btn btn--ghost">Ouvrir</button></td>
+      </tr>
+      <tr>
+        <td>Render farm</td>
+        <td><span class="badge">Archivé</span></td>
+        <td>12.05.2026</td>
+        <td class="num">88</td>
+        <td class="action"><button class="btn btn--ghost">Ouvrir</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .demo-scroll {
+    /* relative : ancre le sr-only absolu, sinon il étend le document. */
+    position: relative;
+    overflow-x: auto;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+</style>

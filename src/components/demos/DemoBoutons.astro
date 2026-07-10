@@ -1,0 +1,19 @@
+---
+// Boutons — trois rangs, un seul primaire vermillon par vue.
+---
+
+<div class="demo-row">
+  <button class="btn btn--primary">Publier</button>
+  <button class="btn btn--secondary">Prévisualiser</button>
+  <button class="btn btn--ghost">Plus tard</button>
+  <button class="btn btn--secondary" disabled>Indisponible</button>
+</div>
+
+<style>
+  .demo-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md);
+  }
+</style>

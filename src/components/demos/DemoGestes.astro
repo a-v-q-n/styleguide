@@ -1,0 +1,43 @@
+---
+// Gestes-signature — eyebrow, filet vermillon, accent italique, filet neutre.
+---
+
+<div class="demo-gestes">
+  <div class="geste">
+    <p class="eyebrow">Sous le capot</p>
+    <p class="geste-label">Eyebrow — carré vermillon + label mono</p>
+  </div>
+  <div class="geste">
+    <hr class="filet" />
+    <p class="geste-label">Filet vermillon — séparateur qui porte</p>
+  </div>
+  <div class="geste">
+    <p class="type-titre geste-titre">Un titre à <em>accent italique</em></p>
+    <p class="geste-label">Le fragment qui porte, en italique vermillon</p>
+  </div>
+  <div class="geste">
+    <hr class="rule" />
+    <p class="geste-label">Filet de séparation neutre</p>
+  </div>
+</div>
+
+<style>
+  .demo-gestes {
+    display: grid;
+    gap: var(--space-lg);
+  }
+  .geste {
+    display: grid;
+    gap: 0.6em;
+    justify-items: start;
+  }
+  .geste-label {
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+  }
+  .geste-titre {
+    font-size: 1.6rem;
+  }
+</style>

@@ -1,0 +1,519 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Familles de composants — l'implémentation de référence de la doctrine
+   (brand/doctrine/composants-web.md). Tout passe par les rôles et les
+   tokens : chaque famille marche à l'identique en clair et en nocturne.
+   ───────────────────────────────────────────────────────────────────────── */
+@layer components {
+  /* Formulaires — label au-dessus, aide dessous, l'erreur au plus près. */
+  .form {
+    display: grid;
+    gap: var(--space-lg);
+    font-family: var(--font-sans);
+  }
+  .form-group {
+    display: grid;
+    gap: var(--space-md);
+  }
+  .form-group-title {
+    margin: 0;
+    font-weight: 600;
+  }
+  .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+  .field {
+    display: grid;
+    gap: var(--space-sm);
+    font-family: var(--font-sans);
+  }
+  .field-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--fg);
+  }
+  .field input,
+  .field select,
+  .field textarea,
+  .input {
+    font-family: var(--font-sans);
+    font-size: var(--text-appui);
+    color: var(--fg);
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    transition: border-color var(--motion-vif) ease;
+  }
+  .field input:hover,
+  .field select:hover,
+  .field textarea:hover,
+  .input:hover {
+    border-color: var(--muted);
+  }
+  .field input::placeholder,
+  .field textarea::placeholder,
+  .input::placeholder {
+    color: var(--muted);
+  }
+  .field textarea {
+    resize: vertical;
+  }
+  .field-help {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .field--error input,
+  .field--error select,
+  .field--error textarea {
+    border-color: var(--accent);
+  }
+  .field-error {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--accent);
+  }
+  /* Select — le corps du champ, un chevron neutre, le menu reste natif. */
+  .select {
+    position: relative;
+    display: grid;
+  }
+  .select select {
+    appearance: none;
+    padding-right: var(--space-lg);
+    cursor: pointer;
+  }
+  .select::after {
+    content: "";
+    position: absolute;
+    right: var(--space-md);
+    top: 50%;
+    width: 0.45em;
+    height: 0.45em;
+    border-right: 1px solid var(--muted);
+    border-bottom: 1px solid var(--muted);
+    transform: translateY(-70%) rotate(45deg);
+    pointer-events: none;
+  }
+  /* Case & radio — coché : fond vermillon, coche/point papier. */
+  .check {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-sans);
+    cursor: pointer;
+  }
+  .check input {
+    appearance: none;
+    width: 1em;
+    height: 1em;
+    margin: 0;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-sm);
+    display: inline-grid;
+    place-content: center;
+    cursor: pointer;
+    transition: border-color var(--motion-vif) ease;
+  }
+  .check input:hover {
+    border-color: var(--muted);
+  }
+  .check input::before {
+    content: "";
+    width: 0.55em;
+    height: 0.55em;
+    transform: scale(0);
+    background: var(--color-paper);
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transition: transform var(--motion-vif) ease;
+  }
+  .check input:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .check input:checked::before {
+    transform: scale(1);
+  }
+  .check input[type="radio"],
+  .check input[type="radio"]::before {
+    border-radius: var(--radius-pill);
+    clip-path: none;
+  }
+  .check input:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  /* Tableaux — le filet porte les lignes ; pas de zébrage. */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+  }
+  .table th {
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-align: left;
+    padding: 0 var(--space-md) var(--space-sm);
+    border-bottom: 1px solid var(--rule);
+  }
+  .table td {
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--rule);
+  }
+  .table--compact td {
+    padding-block: var(--space-sm);
+  }
+  .table tbody tr {
+    transition: background-color var(--motion-vif) ease;
+  }
+  .table tbody tr:hover {
+    background: color-mix(in srgb, var(--fg) 4%, transparent);
+  }
+  .table .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .table .action {
+    text-align: right;
+  }
+  .table .btn {
+    padding: 0.4em 0.8em;
+  }
+
+  /* Filtres — l'actif s'inverse franchement ; le vermillon reste à la vue. */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    padding: 0.35em 0.9em;
+    cursor: pointer;
+    transition:
+      color var(--motion-vif) ease,
+      border-color var(--motion-vif) ease,
+      background-color var(--motion-vif) ease;
+  }
+  .chip:hover {
+    color: var(--fg);
+    border-color: var(--fg);
+  }
+  .chip[aria-pressed="true"] {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+  .seg {
+    display: inline-flex;
+    gap: var(--space-xs);
+    padding: var(--space-xs);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+  }
+  .seg button {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--muted);
+    background: transparent;
+    border: 0;
+    border-radius: var(--radius-sm);
+    padding: 0.35em 0.9em;
+    cursor: pointer;
+    transition:
+      color var(--motion-vif) ease,
+      background-color var(--motion-vif) ease;
+  }
+  .seg button:hover {
+    color: var(--fg);
+  }
+  .seg button[aria-pressed="true"] {
+    background: var(--fg);
+    color: var(--bg);
+  }
+
+  /* Notifications — toast inversé fugace, bannière ancrée, alerte locale. */
+  .toast {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-md);
+    background: var(--fg);
+    color: var(--bg);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    box-shadow: var(--elevation-float);
+    max-width: 40ch;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+  }
+  .toast a {
+    color: var(--accent);
+  }
+  .banner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    background: var(--surface-tint);
+    border-block: 1px solid var(--rule);
+    padding: var(--space-md);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+  }
+  .alert {
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+  }
+  /* Le liseré vermillon : l'action est requise. Compte comme l'accent. */
+  .banner--action,
+  .alert--action {
+    border-left: 3px solid var(--accent);
+  }
+
+  /* Badges de statut — nus : une pastille, un label. Le vivant en vermillon. */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+  .badge::before {
+    content: "";
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: var(--radius-pill);
+    background: var(--muted);
+    flex: none;
+  }
+  .badge--vivant {
+    color: var(--fg);
+  }
+  .badge--vivant::before {
+    background: var(--accent);
+  }
+
+  /* Navigation applicative — wordmark serif, sections mono, actif souligné. */
+  .app-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    min-height: var(--space-xl);
+    border-bottom: 1px solid var(--rule);
+  }
+  .app-wordmark {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    color: var(--fg);
+  }
+  .app-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-inline-start: auto;
+  }
+  .app-nav a {
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-decoration: none;
+    padding-block: 0.35em;
+    border-bottom: 2px solid transparent;
+    transition: color var(--motion-vif) ease;
+  }
+  .app-nav a:hover {
+    color: var(--fg);
+  }
+  .app-nav a[aria-current="page"] {
+    color: var(--fg);
+    border-bottom-color: var(--accent);
+  }
+  .app-foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-md);
+    border-top: 1px solid var(--rule);
+    padding-top: var(--space-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+
+  /* Pagination — mono ; la courante se lit, les flèches reculent. */
+  .pager {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+  }
+  .pager a,
+  .pager span {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.4em 0.55em;
+  }
+  .pager a:hover {
+    color: var(--fg);
+  }
+  .pager [aria-current="page"] {
+    color: var(--fg);
+    font-weight: 600;
+  }
+  .pager-arrow {
+    font-family: var(--font-mono);
+    font-size: 1em;
+    color: var(--muted);
+    background: transparent;
+    border: 0;
+    border-radius: var(--radius-md);
+    padding: 0.4em 0.55em;
+    cursor: pointer;
+    transition:
+      color var(--motion-vif) ease,
+      background-color var(--motion-vif) ease;
+  }
+  .pager-arrow:hover {
+    color: var(--fg);
+    background: color-mix(in srgb, var(--fg) 6%, transparent);
+  }
+  .pager-arrow:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  /* États vides — une invitation : eyebrow, titre, phrase, une action. */
+  .empty {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: var(--space-md);
+    max-width: 44ch;
+    margin-inline: auto;
+    padding-block: var(--space-lg);
+  }
+  .empty-note {
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--font-sans);
+  }
+
+  /* Chargement — skeleton qui souffle, spinner discret. Pas de shimmer. */
+  .skeleton {
+    display: block;
+    background: color-mix(in srgb, var(--fg) 6%, transparent);
+    border-radius: var(--radius-sm);
+    animation: skeleton-souffle var(--motion-souffle) ease-in-out infinite;
+  }
+  .skeleton--bloc {
+    border-radius: var(--radius-md);
+  }
+  @keyframes skeleton-souffle {
+    50% {
+      opacity: 0.6;
+    }
+  }
+  .spinner {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 2px solid var(--rule);
+    border-top-color: var(--muted);
+    border-radius: var(--radius-pill);
+    animation: spinner-rotation var(--motion-rotation) linear infinite;
+  }
+  @keyframes spinner-rotation {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  /* Le skeleton s'immobilise ; le spinner, seul à informer, continue. */
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton {
+      animation: none;
+    }
+  }
+
+  /* Modales — voile d'encre 40 %, surface sobre, un primaire max. */
+  .modal-veil {
+    display: grid;
+    place-items: center;
+    padding: var(--space-lg);
+    background: color-mix(in srgb, var(--color-ink) 40%, transparent);
+  }
+  .modal {
+    position: relative;
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    box-shadow: var(--elevation-float);
+    max-width: 34rem;
+  }
+  .modal-title {
+    margin: 0;
+    padding-right: var(--space-lg);
+    font-family: var(--font-serif);
+    font-size: var(--text-corps);
+    line-height: 1.1;
+  }
+  .modal-body {
+    margin: var(--space-md) 0 0;
+    font-family: var(--font-sans);
+    color: var(--muted);
+  }
+  .modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+  }
+  .modal-close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    background: transparent;
+    border: 0;
+    border-radius: var(--radius-sm);
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0.25em;
+    cursor: pointer;
+    transition: color var(--motion-vif) ease;
+  }
+  .modal-close:hover {
+    color: var(--fg);
+  }
+}

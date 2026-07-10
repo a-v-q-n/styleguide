@@ -1,0 +1,46 @@
+---
+// Chargement — skeleton fidèle à la mise en page, spinner discret.
+---
+
+<div class="demo-chargement">
+  <div class="demo-skeleton-carte">
+    <span class="skeleton skeleton--bloc demo-sk-vignette"></span>
+    <span class="skeleton demo-sk-ligne" style="width: 62%"></span>
+    <span class="skeleton demo-sk-ligne" style="width: 88%"></span>
+    <span class="skeleton demo-sk-ligne" style="width: 44%"></span>
+  </div>
+  <p class="demo-attente">
+    <span class="spinner" role="status" aria-label="Chargement"></span>
+    Enregistrement…
+  </p>
+</div>
+
+<style>
+  .demo-chargement {
+    display: grid;
+    gap: var(--space-lg);
+  }
+  .demo-skeleton-carte {
+    display: grid;
+    gap: var(--space-sm);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+  }
+  .demo-sk-vignette {
+    height: var(--space-xl);
+    margin-bottom: var(--space-sm);
+  }
+  .demo-sk-ligne {
+    height: 0.85em;
+  }
+  .demo-attente {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+  }
+</style>

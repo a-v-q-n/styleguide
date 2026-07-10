@@ -1,0 +1,32 @@
+---
+// Cartes — surface détachée à bord fin ; raised seulement pour flotter.
+---
+
+<div class="demo-cards">
+  <article class="card">
+    <p class="eyebrow">Recette</p>
+    <h3 class="type-titre demo-card-title">Carte plate</h3>
+    <p class="demo-card-body">Bord fin, radius medium, beaucoup d'air. Le défaut.</p>
+  </article>
+  <article class="card card--raised">
+    <p class="eyebrow">Au-dessus</p>
+    <h3 class="type-titre demo-card-title">Carte surélevée</h3>
+    <p class="demo-card-body">Une ombre basse et chaude quand l'élément doit flotter.</p>
+  </article>
+</div>
+
+<style>
+  .demo-cards {
+    display: grid;
+    gap: var(--space-md);
+  }
+  .demo-card-title {
+    margin-top: 0.4em;
+    font-size: 1.6rem;
+  }
+  .demo-card-body {
+    margin: 0.6em 0 0;
+    color: var(--muted);
+    font-family: var(--font-sans);
+  }
+</style>

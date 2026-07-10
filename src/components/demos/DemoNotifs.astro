@@ -1,0 +1,31 @@
+---
+// Notifications — toast inversé, bannière à liseré, alerte inline.
+---
+
+<div class="demo-notifs">
+  <div class="toast" role="status">
+    Publication planifiée pour demain, 9 h.
+    <a href="#">Annuler</a>
+  </div>
+  <div class="banner banner--action">
+    <span>La connexion LinkedIn a expiré.</span>
+    <button class="btn btn--secondary demo-banner-btn">Reconnecter</button>
+  </div>
+  <p class="alert">Ce brouillon n'est visible que par toi.</p>
+</div>
+
+<style>
+  .demo-notifs {
+    display: grid;
+    gap: var(--space-md);
+    justify-items: start;
+  }
+  .demo-notifs .banner,
+  .demo-notifs .alert {
+    width: 100%;
+    margin: 0;
+  }
+  .demo-banner-btn {
+    padding: 0.5em 1em;
+  }
+</style>

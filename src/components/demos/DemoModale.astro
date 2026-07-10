@@ -1,0 +1,24 @@
+---
+// Modale — posée sur son voile d'encre (rendu statique pour la vitrine).
+---
+
+<div class="modal-veil demo-veil">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Supprimer ce média ?">
+    <button class="modal-close" aria-label="Fermer">×</button>
+    <h3 class="modal-title">Supprimer ce média ?</h3>
+    <p class="modal-body">
+      L'original et ses variantes sortiront de la galerie. Cette action est définitive.
+    </p>
+    <div class="modal-actions">
+      <button class="btn btn--ghost">Annuler</button>
+      <button class="btn btn--primary">Supprimer</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Le voile est plein écran en réel ; la démo le cadre dans un bloc. */
+  .demo-veil {
+    border-radius: var(--radius-md);
+  }
+</style>

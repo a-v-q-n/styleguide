@@ -1,0 +1,25 @@
+---
+// Champs & liens — le champ nu et le lien vermillon souligné.
+---
+
+<div class="demo-champs">
+  <label class="field">
+    <span class="field-label">Adresse e-mail</span>
+    <input type="email" placeholder="prenom@domaine.ch" />
+  </label>
+  <p class="link-demo">
+    Un <a href="#">lien vermillon</a> souligné, qui fonce au survol.
+  </p>
+</div>
+
+<style>
+  .demo-champs {
+    display: grid;
+    gap: var(--space-lg);
+  }
+  .link-demo {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+  }
+</style>
