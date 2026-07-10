@@ -1,61 +1,86 @@
 ---
-// Formulaire — groupes, select, textarea, cases, radios, erreur inline.
-// Nom de groupe radio unique par instance : le duo rend la démo deux fois.
-const uid = Math.random().toString(36).slice(2, 7);
+// Formulaire — deux états, deux compositions légales du vermillon :
+// nominal (les coches portent l'accent) et erreur (l'erreur le porte).
+// L'envoi reste secondaire : le vermillon n'appartient jamais au bouton.
+// `instance` (passée par Duo) rend ids et groupes radio uniques par rendu.
+interface Props {
+  instance?: string;
+}
+const { instance = "solo" } = Astro.props;
 ---
 
-<form class="form" onsubmit="return false">
-  <div class="form-group">
-    <p class="form-group-title">Coordonnées</p>
-    <label class="field">
-      <span class="field-label">Nom</span>
-      <input type="text" placeholder="Manu" />
-    </label>
-    <div class="field field--error">
-      <label class="field-label" for={`email-${uid}`}>Adresse e-mail</label>
-      <input id={`email-${uid}`} type="email" value="manu.avqn" aria-invalid="true" />
-      <p class="field-error">L'adresse doit contenir un @.</p>
-    </div>
-  </div>
-  <div class="form-group">
-    <p class="form-group-title">Diffusion</p>
-    <label class="field">
-      <span class="field-label">Canal</span>
-      <span class="select">
-        <select>
-          <option>Bibliothèque</option>
-          <option>Médiathèque</option>
-          <option>avqn.ch</option>
-        </select>
-      </span>
-    </label>
-    <label class="field">
-      <span class="field-label">Message</span>
-      <textarea rows="4" placeholder="Quelques lignes, pas un roman."></textarea>
-      <span class="field-help">Visible sous le titre de la publication.</span>
-    </label>
-    <label class="check">
-      <input type="checkbox" checked />
-      M'avertir à la publication
-    </label>
-    <div class="demo-radios">
-      <label class="check">
-        <input type="radio" name={`ambiance-${uid}`} checked />
-        Clair
-      </label>
-      <label class="check">
-        <input type="radio" name={`ambiance-${uid}`} />
-        Nocturne
-      </label>
-    </div>
-  </div>
-  <div class="form-actions">
-    <button class="btn btn--primary" type="submit">Envoyer</button>
-    <button class="btn btn--ghost" type="button">Annuler</button>
-  </div>
-</form>
+<div class="demo-etats">
+  <section aria-label="Formulaire — état nominal">
+    <p class="type-meta etat-tag">Nominal — les coches portent l'accent</p>
+    <form class="form" onsubmit="return false">
+      <div class="form-group">
+        <label class="field">
+          <span class="field-label">Nom</span>
+          <input type="text" placeholder="Manu" />
+        </label>
+        <label class="field">
+          <span class="field-label">Canal</span>
+          <span class="select">
+            <select>
+              <option>Bibliothèque</option>
+              <option>Médiathèque</option>
+              <option>avqn.ch</option>
+            </select>
+          </span>
+        </label>
+        <label class="field">
+          <span class="field-label">Message</span>
+          <textarea rows="3" placeholder="Quelques lignes, pas un roman."></textarea>
+          <span class="field-help">Visible sous le titre de la publication.</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" checked />
+          M'avertir à la publication
+        </label>
+        <div class="demo-radios">
+          <label class="check">
+            <input type="radio" name={`ambiance-${instance}`} checked />
+            Clair
+          </label>
+          <label class="check">
+            <input type="radio" name={`ambiance-${instance}`} />
+            Nocturne
+          </label>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn--secondary" type="submit">Envoyer</button>
+        <button class="btn btn--ghost" type="button">Annuler</button>
+      </div>
+    </form>
+  </section>
+
+  <hr class="rule" />
+
+  <section aria-label="Formulaire — état d'erreur">
+    <p class="type-meta etat-tag">En erreur — l'erreur porte l'accent</p>
+    <form class="form" onsubmit="return false">
+      <div class="field field--error">
+        <label class="field-label" for={`email-${instance}`}>Adresse e-mail</label>
+        <input id={`email-${instance}`} type="email" value="manu.avqn" aria-invalid="true" />
+        <p class="field-error">L'adresse doit contenir un @.</p>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn--secondary" type="submit">Envoyer</button>
+      </div>
+    </form>
+  </section>
+</div>
 
 <style>
+  .demo-etats {
+    display: grid;
+    gap: var(--space-lg);
+  }
+  .etat-tag {
+    margin: 0 0 var(--space-md);
+    color: var(--muted);
+  }
   .demo-radios {
     display: flex;
     flex-wrap: wrap;

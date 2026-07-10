@@ -1,15 +1,20 @@
 ---
-// État vide — une invitation : eyebrow, titre, phrase, une action.
+// État vide — une invitation : catégorie meta grise, titre, phrase, une action.
+// Le vermillon de la vue appartient au bouton, la catégorie reste grise.
 ---
 
 <div class="empty">
-  <p class="eyebrow">Projets</p>
+  <p class="type-meta demo-vide-cat">Projets</p>
   <h3 class="type-titre demo-vide-titre">Aucun projet encore.</h3>
   <p class="empty-note">Crée ton premier projet pour ouvrir le chantier.</p>
   <button class="btn btn--primary">Créer un projet</button>
 </div>
 
 <style>
+  .demo-vide-cat {
+    margin: 0;
+    color: var(--muted);
+  }
   .demo-vide-titre {
     font-size: 1.9rem;
   }

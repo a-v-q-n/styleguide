@@ -65,9 +65,14 @@
     font-size: 0.9rem;
     color: var(--muted);
   }
+  /* :hover inclus : sans lui, « .field input:hover » (plus spécifique)
+     rendrait la bordure neutre au survol d'un champ en erreur. */
   .field--error input,
   .field--error select,
-  .field--error textarea {
+  .field--error textarea,
+  .field--error input:hover,
+  .field--error select:hover,
+  .field--error textarea:hover {
     border-color: var(--accent);
   }
   .field-error {

@@ -77,9 +77,13 @@ serif porte le message, il ne saisit pas.
   porte le sens** — pas de rôle `--danger` supplémentaire, on reste dans la palette.
 - **Validation positive** — discrète, en `--muted` (« enregistré ») ; jamais de vert, il n'existe pas
   dans la palette.
+- **Actions** — l'envoi en **secondaire**, l'abandon en fantôme : dans un formulaire, le vermillon
+  appartient aux coches — ou à l'erreur —, jamais au bouton.
 
-**Do** : un label au-dessus de chaque champ, l'erreur collée à sa cause, des groupes qui respirent.
-**Don't** : label flottant, astérisques criards, message d'erreur groupé en tête, couleur de succès.
+**Do** : un label au-dessus de chaque champ, l'erreur collée à sa cause, des groupes qui respirent,
+l'envoi en secondaire.
+**Don't** : label flottant, astérisques criards, message d'erreur groupé en tête, couleur de succès,
+bouton d'envoi vermillon.
 
 ## Tableaux
 
@@ -187,16 +191,18 @@ catalogue.
 
 Un état vide est une invitation, pas une excuse.
 
-- **Anatomie** — un eyebrow (la catégorie), un titre serif court qui dit l'état (« Aucun projet
-  encore »), **une** phrase d'appui `--muted` qui dit le geste, **une** action. Centré dans la zone
-  vide, largeur max ~44 ch : l'air fait le reste.
+- **Anatomie** — un label de catégorie en `meta` (`--muted`), un titre serif court qui dit l'état
+  (« Aucun projet encore »), **une** phrase d'appui `--muted` qui dit le geste, **une** action.
+  Centré dans la zone vide, largeur max ~44 ch : l'air fait le reste.
 - **L'action est le primaire de la vue** — une vue vide n'a pas d'action plus importante que d'en
-  sortir.
+  sortir. Le vermillon de la vue appartient au bouton : la catégorie reste grise, pas d'eyebrow
+  vermillon qui lui disputerait l'attention.
 - **Illustration facultative** — un trait fin monochrome `--muted` ; l'absence d'illustration est le
   défaut. Jamais de scène décorative qui crie plus fort que le titre.
 
 **Do** : un titre qui constate, une phrase qui invite, une seule action.
-**Don't** : paragraphe d'excuses, illustration criarde, trois boutons concurrents.
+**Don't** : paragraphe d'excuses, illustration criarde, trois boutons concurrents, eyebrow vermillon
+au-dessus d'un bouton vermillon.
 
 ## Chargement
 
