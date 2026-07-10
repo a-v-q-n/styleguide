@@ -21,7 +21,7 @@ const baseColors = [
   { key: "filet", name: "filet", role: "séparateur (clair)" },
 ];
 const baseHex = color.base as Record<string, string>;
-const worldNote: Record<string, string> = {
+const recetteNote: Record<string, string> = {
   ardoise: "nuit, heure bleue",
   ambre: "matin, soleil rasant",
   sauge: "plein jour, végétal",
@@ -71,14 +71,15 @@ const elevationEntries = Object.entries(elevation);
     </div>
     <p class="note">Jamais de blanc ni de noir purs. Un seul vermillon par composition.</p>
 
-    <h3 class="type-titre sub">Mondes-couleur</h3>
+    <h3 class="type-titre sub">Recettes de lumière</h3>
     <p class="note">
-      Cinq recettes de lumière pour la DA image — des dominantes de scène, jamais des couleurs d'UI.
+      Une dominante et son contrepoint par image — des dominantes de scène, jamais des couleurs
+      d'UI.
     </p>
     <div class="grid-swatch">
       {
-        Object.entries(color.worlds).map(([k, hex]) => (
-          <Swatch hex={hex} name={k} role={worldNote[k]} />
+        Object.entries(color.recettes).map(([k, hex]) => (
+          <Swatch hex={hex} name={k} role={recetteNote[k]} />
         ))
       }
     </div>

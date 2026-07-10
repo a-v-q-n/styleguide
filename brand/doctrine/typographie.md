@@ -27,7 +27,7 @@ typographie est le premier geste de marque — avant la couleur, avant la mise e
 
 ## Deux expressions d'une même échelle
 
-Chaque rôle porte deux valeurs, pour servir les deux mondes AVQN :
+Chaque rôle porte deux valeurs, pour servir les deux ambiances AVQN :
 
 - **web** — une taille fluide (`clamp`) qui respire du mobile au desktop. C'est ce qu'un projet web
   consomme via `--text-<rôle>`.

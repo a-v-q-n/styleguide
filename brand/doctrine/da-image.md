@@ -17,13 +17,13 @@ field, carefully composed editorial frame, no readable text anywhere, no frame l
 Noirs chauds jamais bleus ni purs, hautes lumières crème jamais cliniques, saturation contenue. La
 halation (halo chaud autour des sources) tire naturellement les lumières vers le vermillon.
 
-## Les mondes = des recettes de lumière (paires, jamais monochromes)
+## Les recettes de lumière (paires, jamais monochromes)
 
-Une recette par visuel, choisie selon le sujet. Chaque monde est une **paire dominante +
+Une recette par visuel, choisie selon le sujet. Chaque recette est une **paire dominante +
 contrepoint** — c'est le contrepoint qui rend la couleur intelligente ; un plan monochrome est un
 plan raté.
 
-| Monde     | Lumière                | Dominante                 | Contrepoint                     |
+| Recette   | Lumière                | Dominante                 | Contrepoint                     |
 | --------- | ---------------------- | ------------------------- | ------------------------------- |
 | `ardoise` | nuit, heure bleue      | bleus d'ombre `#46647A`   | tungstène ambré                 |
 | `ambre`   | matin, soleil rasant   | ors chauds `#C89B5A`      | une ombre ardoise froide        |
@@ -32,7 +32,7 @@ plan raté.
 | `prune`   | crépuscule, focus      | violets sourds `#5F5069`  | une lueur chaude (lampe, écran) |
 
 Nommer explicitement la paire dans le prompt (ex. `warm amber golden light dominates, counterpointed
-by one cool slate-blue shadow area`). Jamais deux mondes dominants dans un même plan.
+by one cool slate-blue shadow area`). Jamais deux recettes dominantes dans un même plan.
 
 ## Le vermillon sémantique (la signature)
 
@@ -66,7 +66,7 @@ Chaque image dit **une phrase qu'elle doit porter toute seule**, fixée avant de
 sans intention claire n'entre pas dans la banque. Le gabarit de prompt :
 
 `Cinematic editorial photograph, vertical composition` + **la scène** (sujet, action, moment — dire
-aussi ce qui est absent) + **la paire du monde** + **l'objet vermillon et son sens** + **la touche
+aussi ce qui est absent) + **la paire de la recette** + **l'objet vermillon et son sens** + **la touche
 futur** + le grade commun. Peu d'éléments, de l'air, un premier plan travaillé.
 
 ## Do / Don't
@@ -74,4 +74,4 @@ futur** + le grade commun. Peu d'éléments, de l'air, un premier plan travaill�
 - **Do** : une paire par plan, un vermillon porteur de sens, une touche futur discrète, visages
   vivants ou absences éloquentes, grain film et halation, beaucoup d'air.
 - **Don't** : texte lisible, cadre/liseré/bordure, néons cyan-magenta, SF spectaculaire, sourires
-  stock posés, plan monochrome, deux mondes dans un plan, blancs cliniques, noirs bleus.
+  stock posés, plan monochrome, deux recettes dans un plan, blancs cliniques, noirs bleus.

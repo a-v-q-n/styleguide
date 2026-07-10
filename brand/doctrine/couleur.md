@@ -38,7 +38,7 @@ La marque vit en deux ambiances. On ne code jamais une couleur brute dans une in
 | `--rule` filet       | `filet`   | crème 14 %    |
 | `--accent` accent    | vermillon | vermillon     |
 
-Le vermillon ne bascule pas : c'est la constante qui unit les deux mondes.
+Le vermillon ne bascule pas : c'est la constante qui unit les deux ambiances.
 
 ### Quelle ambiance pour quel produit
 
@@ -56,7 +56,7 @@ Une bascule clair/nocturne offerte à l'utilisateur est toujours permise — les
 marque, aucune n'est un mode dégradé. Le **défaut** suit la règle ; la préférence exprimée la
 remplace.
 
-## Les mondes-couleur
+## Les recettes de lumière
 
 Cinq recettes de lumière servent la direction artistique des images (voir `da-image`) : `ardoise`
 `#46647A`, `ambre` `#C89B5A`, `sauge` `#71805F`, `argile` `#BC8272`, `prune` `#5F5069`. Ce sont des
@@ -67,4 +67,4 @@ titre, seulement dans la colorimétrie d'un visuel.
 
 - **Do** : contraste chaud, un vermillon porteur de sens, le gris pour le second plan, beaucoup d'air.
 - **Don't** : blanc ou noir purs, plus d'un accent, vermillon décoratif, couleurs hors palette dans
-  une interface, mondes-couleur en aplat d'UI.
+  une interface, recettes de lumière en aplat d'UI.

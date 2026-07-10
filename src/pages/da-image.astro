@@ -10,10 +10,10 @@ const grade =
   "shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border";
 
 const gabarit =
-  "Cinematic editorial photograph, vertical composition + [la scène : sujet, action, moment — dire aussi ce qui est absent] + [la paire du monde : dominante + contrepoint] + [l'objet vermillon et son sens] + [la touche futur discrète] + [le grade commun]";
+  "Cinematic editorial photograph, vertical composition + [la scène : sujet, action, moment — dire aussi ce qui est absent] + [la paire de la recette : dominante + contrepoint] + [l'objet vermillon et son sens] + [la touche futur discrète] + [le grade commun]";
 
-const worldHex = color.worlds as Record<string, string>;
-const worlds = [
+const recetteHex = color.recettes as Record<string, string>;
+const recettes = [
   { key: "ardoise", light: "nuit, heure bleue", counter: "tungstène ambré des lampes" },
   { key: "ambre", light: "matin, soleil rasant", counter: "une ombre ardoise froide" },
   { key: "sauge", light: "plein jour, végétal", counter: "bois et terre argile" },
@@ -24,7 +24,7 @@ const worlds = [
 
 <Base
   title="DA image"
-  description="« L'anticipation douce » : la direction artistique des images AVQN — grade 35mm, mondes-couleur, vermillon sémantique."
+  description="« L'anticipation douce » : la direction artistique des images AVQN — grade 35mm, recettes de lumière, vermillon sémantique."
 >
   <Band surface="grid" class="page-head">
     <p class="eyebrow">Direction artistique · Image</p>
@@ -43,19 +43,19 @@ const worlds = [
     <DoctrineLink slug="da-image" />
   </Section>
 
-  <Section eyebrow="02 · Les mondes" title="Des recettes de lumière" surface="tint">
+  <Section eyebrow="02 · Les recettes" title="Des recettes de lumière" surface="tint">
     <p class="note">
       Une paire par visuel : une dominante et son contrepoint. C'est le contrepoint qui rend la
       couleur intelligente — un plan monochrome est un plan raté.
     </p>
     <div class="worlds">
       {
-        worlds.map((w) => (
+        recettes.map((w) => (
           <article class="world">
-            <div class="world-chip" style={`--c:${worldHex[w.key]}`} />
+            <div class="world-chip" style={`--c:${recetteHex[w.key]}`} />
             <div class="world-body">
               <h3 class="world-name">
-                {w.key} <span class="world-hex">{worldHex[w.key]}</span>
+                {w.key} <span class="world-hex">{recetteHex[w.key]}</span>
               </h3>
               <p class="world-light">{w.light}</p>
               <p class="world-counter">contrepoint — {w.counter}</p>
