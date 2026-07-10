@@ -1,0 +1,85 @@
+{
+  "photo": [
+    {
+      "fichier": "photo/admin-deborde.jpg",
+      "style": "photo",
+      "usage": "b-roll",
+      "nom": "admin-deborde",
+      "intention": "L'admin mange tes soirées.",
+      "prompt": "Cinematic editorial photograph, vertical composition. Evening in a modern home office: a contemporary light oak desk buried under paper invoices, receipts and scattered sticky notes, laptop closed under the pile, chair empty. Warm terracotta lamp light, deep soft shadows — the day ended but the admin did not. One vermilion (#E0542B) sticky note overflows from the pile's edge, the task that did not fit in the day. Half-buried under the papers, a small matte device with its indicator light off — a system waiting to be switched on. Contemporary interior, modern furniture, no vintage furniture, no rustic beams; the retro lives only in the film rendering. Any writing on papers blurred and unreadable. shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border"
+    },
+    {
+      "fichier": "photo/nuit-systeme.jpg",
+      "style": "photo",
+      "usage": "b-roll",
+      "nom": "nuit-systeme",
+      "intention": "Le système travaille pendant que tu es sorti.",
+      "prompt": "Cinematic editorial photograph, vertical composition. A modern minimalist home office at night, blue hour: floor-to-ceiling window with faint city lights, clean concrete wall, light oak designer desk, sleek modern chair pushed back, work finished. Deep slate-blue shadows dominate, counterpointed by one warm tungsten glow from a modern designer desk lamp. On the desk, a small elegant matte device with a single vermilion (#E0542B) indicator light — the system quietly running overnight. Future touch in the corner: a slim curved-glass terminal with soft amber glyphs, out of focus, text unreadable. Contemporary interior, modern architecture and furniture, clean lines, matte surfaces — resolutely modern space, no vintage furniture, no rustic beams, no old farmhouse; the retro lives only in the film rendering. Lots of negative space. shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border"
+    },
+    {
+      "fichier": "photo/humain-garde-la-main.jpg",
+      "style": "photo",
+      "usage": "b-roll",
+      "nom": "humain-garde-la-main",
+      "intention": "L'automatisation reste sous ta main.",
+      "prompt": "Cinematic editorial photograph, vertical composition. A bright modern creative studio in full daylight: white walls, light oak shelving, large windows, green plants, clean modern workbench. Soft sage-green tones dominate, counterpointed by warm clay and light wood earth tones. A person's hands adjusting a precisely machined wood-and-brushed-aluminum control dial that pilots something intelligent and unseen. One vermilion (#E0542B) sticky note on the bench marks the step that matters, any writing blurred and unreadable. Contemporary maker studio, modern design furniture, resolutely modern space, no vintage tools, no rustic beams, no old farmhouse; the retro lives only in the film rendering. Tactile, credible, airy. shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border"
+    },
+    {
+      "fichier": "photo/matin-planifie.jpg",
+      "style": "photo",
+      "usage": "b-roll",
+      "nom": "matin-planifie",
+      "intention": "La journée se décide avant l'écran.",
+      "prompt": "Cinematic editorial photograph, vertical composition. A modern kitchen in early morning raking golden sunlight: matte handleless cabinets, stone countertop, large window, clean architectural lines. Warm amber tones dominate, counterpointed by one cool slate-blue shadow area near the window. A person seen from behind, slightly out of focus, holding a single steel moka pot in one hand, pouring coffee into a ceramic mug standing on the counter — exactly one moka pot in the whole scene, held firmly in hand. In sharp focus on the counter: a closed notebook with a vermilion (#E0542B) cover, a pen resting on it — the day planned by hand before any screen. Future touch: a thin flexible e-paper tablet propped against a ceramic jar, surface out of focus, unreadable. Contemporary interior, resolutely modern space, no vintage furniture, no rustic beams; the retro lives only in the film rendering. Airy frame, few elements, everything physically grounded. shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border"
+    },
+    {
+      "fichier": "photo/temps-rendu.jpg",
+      "style": "photo",
+      "usage": "b-roll",
+      "nom": "temps-rendu",
+      "intention": "Des heures rendues, chaque semaine.",
+      "prompt": "Cinematic editorial photograph, vertical composition. Early morning on a Swiss lakeside path, soft sage greens of trees and gentle golden light, mountains hazy in the distance. A person walks away from the camera, light and unhurried, hands free in pockets, no phone, no bag, no watch — nothing to check, nowhere urgent to be. One vermilion (#E0542B) beanie on their head — the freed person is the subject. No technology anywhere in the frame; that absence is the point. Lots of air, worked foreground with grasses out of focus. shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border"
+    },
+    {
+      "fichier": "photo/ca-tourne.jpg",
+      "style": "photo",
+      "usage": "b-roll",
+      "nom": "ca-tourne",
+      "intention": "La première fois que ça tourne tout seul.",
+      "prompt": "Cinematic editorial photograph, vertical composition. Dusk in a modern apartment workspace: a freelancer leans back from a clean light oak desk, quiet contained smile, one hand over their mouth in happy disbelief, face softly lit by the warm glow of an out-of-focus screen. On the desk, a small matte device whose vermilion (#E0542B) indicator light has just come on — the first automation running by itself. Muted plum shadows dominate the room, counterpointed by one warm desk lamp. Contemporary interior, modern furniture, no vintage furniture; the retro lives only in the film rendering. Emotion legible, never posed, no stock smile. shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border"
+    },
+    {
+      "fichier": "photo/relation-humaine.jpg",
+      "style": "photo",
+      "usage": "post-linkedin",
+      "nom": "relation-humaine",
+      "intention": "Pendant que le back-office tourne, toi tu es avec ton client.",
+      "prompt": "Cinematic editorial photograph, vertical composition. A warm modern office lounge in golden interior light: terracotta lime-plaster feature wall, contemporary sofa and light oak table, clean architectural lines. Terracotta and skin tones dominate, counterpointed by cream and off-white surfaces. Two people mid-conversation across the table, faces credible and alive, caught mid-moment, never posed, no stock smiles. Between them on the table lies one vermilion (#E0542B) pen — the agreement about to be signed. Future touch in the corner: a small pebble-shaped recorder in warm matte fabric and wood with a tiny amber presence light, discreet, not a consumer smart speaker. Contemporary interior, modern design furniture, resolutely modern space, no vintage furniture, no rustic walls, no old farmhouse; the retro lives only in the film rendering. shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border"
+    },
+    {
+      "fichier": "photo/deplacement-valeur.jpg",
+      "style": "photo",
+      "usage": "post-linkedin",
+      "nom": "deplacement-valeur",
+      "intention": "Le travail ne disparaît pas, il se déplace.",
+      "prompt": "Cinematic editorial photograph, vertical composition. Warm golden modern office interior. In sharp focus foreground: two hands sketching a strategy together on large paper across a light oak table — the high-value human work, pens moving, a conversation happening just out of frame. In the blurred background on a sideboard, a small matte machine with a vermilion (#E0542B) indicator light quietly does the busywork alone — the work did not disappear, it moved. Terracotta and skin tones dominate, counterpointed by cream surfaces. Contemporary interior, modern furniture, no vintage furniture; the retro lives only in the film rendering. Any writing blurred and unreadable. shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border"
+    },
+    {
+      "fichier": "photo/facture-la-nuit.jpg",
+      "style": "photo",
+      "usage": "post-linkedin",
+      "nom": "facture-la-nuit",
+      "intention": "Facturé pendant que tu dormais.",
+      "prompt": "Cinematic editorial photograph, vertical composition. Modern kitchen counter in early morning amber raking light: a ceramic coffee cup gently steaming, and beside it a small standing e-paper device showing a single small vermilion (#E0542B) notification dot on an otherwise calm, blurred, unreadable surface — invoiced overnight, nothing left to do. No laptop, no papers anywhere. One cool slate-blue shadow area near the window as counterpoint. In the far background, a person out of focus stands relaxed by the window with their own cup. Contemporary interior, clean lines, no vintage furniture; the retro lives only in the film rendering. shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border"
+    },
+    {
+      "fichier": "photo/comprendre-avant.jpg",
+      "style": "photo",
+      "usage": "post-linkedin",
+      "nom": "comprendre-avant",
+      "intention": "Prendre le temps de comprendre avant d'automatiser.",
+      "prompt": "Cinematic editorial photograph, vertical composition. Dusk in a modern reading corner: contemporary lounge chair in wool bouclé, minimal light oak shelf, large window with the last violet light, clean modern apartment. Muted plum and violet shadows dominate, counterpointed by one warm pool of light from a modern arc lamp. A person reading a printed page in deep focus, face softly lit, emotion legible. One vermilion (#E0542B) page marker shows exactly where the important part is. Future touch: a soft flexible reader lying on the side table, its surface out of focus and unreadable. Contemporary interior, modern design furniture, resolutely modern space, no vintage furniture, no old bookshelves wall, no old farmhouse; the retro lives only in the film rendering. Still, calm, almost silent frame. shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border"
+    }
+  ],
+  "schema": []
+}

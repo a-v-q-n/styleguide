@@ -21,6 +21,7 @@ const required = [
   "doctrine/couleur.md",
   "doctrine/da-image.md",
   "assets/logo/logo-noir.svg",
+  "assets/exemples/photo/admin-deborde.jpg",
   "favicon.svg",
 ];
 

@@ -69,7 +69,9 @@ aucune techno — l'absence de machine EST leur propos.
 ## Une intention, pas du décor
 
 Chaque image dit **une phrase qu'elle doit porter toute seule**, fixée avant de générer. Une image
-sans intention claire n'entre pas dans la banque. Le gabarit de prompt :
+sans intention claire n'entre pas dans la banque. La banque de référence est organisée par
+**usage** — b-rolls vidéo, posts — et chaque image y entre avec sa phrase et le prompt exact qui
+l'a produite. Le gabarit de prompt :
 
 `Cinematic editorial photograph, vertical composition` + **la scène contemporaine** (sujet, action,
 moment — dire aussi ce qui est absent) + **la direction de couleur** (si elle sert le propos) +

@@ -6,6 +6,7 @@ import CopyBlock from "../../components/CopyBlock.astro";
 import DoctrineLink from "../../components/DoctrineLink.astro";
 import MediaNav from "../../components/MediaNav.astro";
 import color from "../../../brand/tokens/color.json";
+import manifest from "../../../brand/assets/exemples/manifest.json";
 
 const grade =
   "shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border";
@@ -14,6 +15,11 @@ const gabarit =
   "Cinematic editorial photograph, vertical composition + [la scène contemporaine : sujet, action, moment — dire aussi ce qui est absent] + [la direction de couleur, si elle sert le propos] + [l'objet vermillon et son sens] + [la touche futur discrète] + [le grade commun]";
 
 const recetteHex = color.recettes as Record<string, string>;
+
+const usages = [
+  { titre: "B-rolls vidéo", items: manifest.photo.filter((g) => g.usage === "b-roll") },
+  { titre: "Posts LinkedIn", items: manifest.photo.filter((g) => g.usage === "post-linkedin") },
+];
 const recettes = [
   { key: "ardoise", light: "nuit, heure bleue", counter: "tungstène ambré des lampes" },
   { key: "ambre", light: "matin, soleil rasant", counter: "une ombre ardoise froide" },
@@ -101,9 +107,40 @@ const recettes = [
     <CopyBlock code={gabarit} />
     <p class="note">
       Peu d'éléments, de l'air, un premier plan travaillé. Aucun texte lisible dans l'image — les
-      mots vivent dans la mise en page. La galerie d'exemples générés arrive.
+      mots vivent dans la mise en page.
     </p>
     <DoctrineLink slug="da-image" />
+  </Section>
+
+  <Section eyebrow="05 · La banque" title="Des images avec un propos">
+    <p class="note">
+      La référence du style : chaque image entre dans la banque avec son usage, la phrase qu'elle
+      porte toute seule, et le prompt exact qui l'a produite — la température et le ton à répliquer.
+    </p>
+    {
+      usages.map((u) => (
+        <div class="usage">
+          <h3 class="usage-titre">{u.titre}</h3>
+          <div class="galerie">
+            {u.items.map((g) => (
+              <article class="galerie-item">
+                <img
+                  src={`/assets/exemples/${g.fichier}`}
+                  alt={`${g.nom} — ${g.intention}`}
+                  loading="lazy"
+                />
+                <p class="galerie-nom">{g.nom}</p>
+                <p class="galerie-intention">« {g.intention} »</p>
+                <details class="galerie-prompt">
+                  <summary>le prompt</summary>
+                  <CopyBlock code={g.prompt} />
+                </details>
+              </article>
+            ))}
+          </div>
+        </div>
+      ))
+    }
   </Section>
 
   <style>
@@ -204,6 +241,54 @@ const recettes = [
       font-size: 2rem;
       color: var(--accent);
       line-height: 1;
+    }
+    .usage {
+      margin-top: var(--space-xl);
+    }
+    .usage-titre {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin: 0 0 var(--space-md);
+    }
+    .galerie {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--space-lg);
+    }
+    .galerie-item img {
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+    }
+    .galerie-nom {
+      margin: var(--space-sm) 0 0;
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .galerie-intention {
+      margin: 0.25em 0 0;
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      line-height: 1.3;
+    }
+    .galerie-prompt {
+      margin-top: var(--space-sm);
+    }
+    .galerie-prompt summary {
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .galerie-prompt[open] summary {
+      color: var(--fg);
     }
     @media (max-width: 640px) {
       .rules {
