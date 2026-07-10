@@ -76,7 +76,7 @@ function renderCss(t) {
   for (const [k, v] of entries(c)) {
     L.push(`  --color-${k.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase()}: ${v};`);
   }
-  for (const [k, v] of entries(t.color?.worlds)) L.push(`  --world-${k}: ${v};`);
+  for (const [k, v] of entries(t.color?.recettes)) L.push(`  --recette-${k}: ${v};`);
   for (const [k, v] of entries(ty.families)) L.push(`  --font-${k}: ${v};`);
   for (const [role, def] of entries(ty.scale)) L.push(`  --text-${role}: ${def.web};`);
   for (const [k, v] of entries(t.space)) L.push(`  --space-${k}: ${v};`);
@@ -130,7 +130,7 @@ function renderCss(t) {
 
 function renderLlms(t, doctrines, siteUrl) {
   const c = t.color?.base ?? {};
-  const w = t.color?.worlds ?? {};
+  const w = t.color?.recettes ?? {};
   const ty = t.typography ?? {};
   const L = [];
   L.push("# Charte AVQN — livre de marque");
@@ -158,7 +158,7 @@ function renderLlms(t, doctrines, siteUrl) {
     `- papier ${c.paper} · encre ${c.ink} · vermillon ${c.vermillon} · gris ${c.grey} (nocturne ${c.greyNight}) · filet ${c.filet}`,
   );
   L.push(
-    `- Mondes-couleur (DA image, paires de lumière) : ${entries(w)
+    `- Recettes de lumière (DA image, paires dominante + contrepoint) : ${entries(w)
       .map(([k, v]) => `${k} ${v}`)
       .join(" · ")}`,
   );

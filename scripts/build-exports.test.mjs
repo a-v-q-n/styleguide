@@ -21,7 +21,7 @@ function fixture() {
       greyNight: "#CBC4BA",
       filet: "#E7E1D8",
     },
-    worlds: { ardoise: "#46647A", ambre: "#C89B5A" },
+    recettes: { ardoise: "#46647A", ambre: "#C89B5A" },
   });
   T("typography.json", {
     families: { serif: '"Instrument Serif", serif', mono: '"Geist Mono", monospace' },
@@ -70,6 +70,7 @@ test("buildExports génère tokens.css avec vars claires et override nocturne", 
   const css = readFileSync(join(f.out, "tokens.css"), "utf8");
   assert.match(css, /--color-paper:\s*#FAF8F3/);
   assert.match(css, /--color-vermillon:\s*#E0542B/);
+  assert.match(css, /--recette-ardoise:\s*#46647A/);
   assert.match(css, /\[data-theme="night"\]/);
   assert.match(css, /--fg:\s*var\(--color-paper\)/); // nocturne inverse le fg
   assert.match(css, /--motion-vif:\s*150ms/);
@@ -102,6 +103,7 @@ test("buildExports génère llms.txt avec titre, règles et liens doctrine", () 
   const llms = readFileSync(join(f.out, "llms.txt"), "utf8");
   assert.match(llms, /# Charte AVQN/);
   assert.match(llms, /Non-négociables/);
+  assert.match(llms, /Recettes de lumière/);
   assert.match(llms, /Couleur — Le contraste chaud/);
   assert.match(llms, /styleguide\.avqn\.ch\/doctrine\/couleur\.md/);
 });
@@ -114,7 +116,7 @@ test("buildExports tolère une famille de tokens absente", () => {
   mkdirSync(tokensDir);
   writeFileSync(
     join(tokensDir, "color.json"),
-    JSON.stringify({ base: { paper: "#FAF8F3", ink: "#211C17" }, worlds: {} }),
+    JSON.stringify({ base: { paper: "#FAF8F3", ink: "#211C17" }, recettes: {} }),
   );
   writeFileSync(
     join(tokensDir, "typography.json"),
