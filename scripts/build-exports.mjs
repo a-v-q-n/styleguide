@@ -80,6 +80,7 @@ function renderCss(t) {
   for (const [k, v] of Object.entries(t.space)) L.push(`  --space-${k}: ${v};`);
   for (const [k, v] of Object.entries(t.radius)) L.push(`  --radius-${k}: ${v};`);
   for (const [k, v] of Object.entries(t.elevation)) L.push(`  --elevation-${k}: ${v};`);
+  for (const [k, v] of Object.entries(t.motion)) L.push(`  --motion-${k}: ${v};`);
   L.push(`  --glow-vermillon: ${t.glow.vermillon};`);
   L.push(`  --glow-vignette: ${t.glow.vignette};`);
   L.push(`  --grid-clair-color: ${t.grid.clair.color};`);
@@ -105,6 +106,9 @@ function renderCss(t) {
   L.push(`  --accent: var(--color-vermillon);`);
   L.push(`  --grid-color: var(--grid-nocturne-color);`);
   L.push(`  --grid-step: var(--grid-nocturne-step);`);
+  // Redéclarée ici pour qu'un sous-arbre [data-theme] re-dérive la teinte de SES rôles
+  // (une custom property se fige là où elle est déclarée).
+  L.push(`  --surface-tint: color-mix(in srgb, var(--fg) 3.5%, var(--bg));`);
   L.push("}");
   // Classes de rôle typographique — le dogfood : les pages écrivent .type-hero, etc.
   for (const [role, def] of Object.entries(ty.scale)) {
