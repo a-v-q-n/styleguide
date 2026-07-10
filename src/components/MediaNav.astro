@@ -15,7 +15,11 @@ const here = Astro.url.pathname.replace(/\/+$/, "") || "/";
 
 <nav class="media-nav" aria-label="Section Média">
   <div class="wrap media-nav-inner">
-    <a href="/media" class="media-link media-home" aria-current={here === "/media" ? "page" : undefined}>
+    <a
+      href="/media"
+      class="media-link media-home"
+      aria-current={here === "/media" ? "page" : undefined}
+    >
       Média
     </a>
     {
@@ -23,11 +27,7 @@ const here = Astro.url.pathname.replace(/\/+$/, "") || "/";
         <span class="media-group">
           <span class="media-group-label">{g.label}</span>
           {g.items.map((i) => (
-            <a
-              href={i.href}
-              class="media-link"
-              aria-current={here === i.href ? "page" : undefined}
-            >
+            <a href={i.href} class="media-link" aria-current={here === i.href ? "page" : undefined}>
               {i.label}
             </a>
           ))}

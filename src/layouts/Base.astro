@@ -60,7 +60,9 @@ const here = Astro.url.pathname.replace(/\/+$/, "") || "/";
               <a
                 href={item.href}
                 class="nav-link"
-                aria-current={here === item.href || here.startsWith(item.href + "/") ? "page" : undefined}
+                aria-current={
+                  here === item.href || here.startsWith(item.href + "/") ? "page" : undefined
+                }
               >
                 {item.label}
               </a>
