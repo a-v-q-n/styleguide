@@ -17,13 +17,14 @@ field, carefully composed editorial frame, no readable text anywhere, no frame l
 Noirs chauds jamais bleus ni purs, hautes lumières crème jamais cliniques, saturation contenue. La
 halation (halo chaud autour des sources) tire naturellement les lumières vers le vermillon.
 
-## Les recettes de lumière (paires, jamais monochromes)
+## Les recettes de lumière (une palette, pas des règles)
 
-Une recette par visuel, choisie selon le sujet. Chaque recette est une **paire dominante +
-contrepoint** — c'est le contrepoint qui rend la couleur intelligente ; un plan monochrome est un
-plan raté.
+Cinq ambiances colorées, à choisir selon le propos du visuel. Ce sont des **directions
+artistiques** — des couleurs possibles qui situent l'image dans la banque, pas des contraintes.
+Une dominante suffit ; un contrepoint (une zone qui répond à la dominante) enrichit souvent le
+plan, quand il sert la scène.
 
-| Recette   | Lumière                | Dominante                 | Contrepoint                     |
+| Recette   | Lumière                | Dominante                 | Contrepoint possible            |
 | --------- | ---------------------- | ------------------------- | ------------------------------- |
 | `ardoise` | nuit, heure bleue      | bleus d'ombre `#46647A`   | tungstène ambré                 |
 | `ambre`   | matin, soleil rasant   | ors chauds `#C89B5A`      | une ombre ardoise froide        |
@@ -31,8 +32,13 @@ plan raté.
 | `argile`  | intérieur doré, humain | terracotta/peau `#BC8272` | crème et blancs cassés          |
 | `prune`   | crépuscule, focus      | violets sourds `#5F5069`  | une lueur chaude (lampe, écran) |
 
-Nommer explicitement la paire dans le prompt (ex. `warm amber golden light dominates, counterpointed
-by one cool slate-blue shadow area`). Jamais deux recettes dominantes dans un même plan.
+## Les lieux sont contemporains
+
+Le rétro vit dans le **rendu** (grain, halation, colorimétrie), jamais dans le **décor**. Les
+scènes se passent aujourd'hui : intérieurs modernes, lignes nettes, mobilier actuel — pas de
+vieilles fermes, de poutres rustiques ni de mobilier d'époque. Le dire explicitement dans le
+prompt (`contemporary interior, modern furniture, no vintage furniture, no rustic beams; the
+retro lives only in the film rendering`).
 
 ## Le vermillon sémantique (la signature)
 
@@ -65,13 +71,15 @@ aucune techno — l'absence de machine EST leur propos.
 Chaque image dit **une phrase qu'elle doit porter toute seule**, fixée avant de générer. Une image
 sans intention claire n'entre pas dans la banque. Le gabarit de prompt :
 
-`Cinematic editorial photograph, vertical composition` + **la scène** (sujet, action, moment — dire
-aussi ce qui est absent) + **la paire de la recette** + **l'objet vermillon et son sens** + **la touche
-futur** + le grade commun. Peu d'éléments, de l'air, un premier plan travaillé.
+`Cinematic editorial photograph, vertical composition` + **la scène contemporaine** (sujet, action,
+moment — dire aussi ce qui est absent) + **la direction de couleur** (si elle sert le propos) +
+**l'objet vermillon et son sens** + **la touche futur** + le grade commun. Peu d'éléments, de
+l'air, un premier plan travaillé.
 
 ## Do / Don't
 
-- **Do** : une paire par plan, un vermillon porteur de sens, une touche futur discrète, visages
-  vivants ou absences éloquentes, grain film et halation, beaucoup d'air.
+- **Do** : une intention par image, un vermillon porteur de sens, des lieux contemporains, une
+  touche futur discrète, visages vivants ou absences éloquentes, grain film et halation, beaucoup
+  d'air.
 - **Don't** : texte lisible, cadre/liseré/bordure, néons cyan-magenta, SF spectaculaire, sourires
-  stock posés, plan monochrome, deux recettes dans un plan, blancs cliniques, noirs bleus.
+  stock posés, décors vieillots ou rustiques, blancs cliniques, noirs bleus.

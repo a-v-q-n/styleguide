@@ -11,7 +11,7 @@ const grade =
   "shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border";
 
 const gabarit =
-  "Cinematic editorial photograph, vertical composition + [la scène : sujet, action, moment — dire aussi ce qui est absent] + [la paire de la recette : dominante + contrepoint] + [l'objet vermillon et son sens] + [la touche futur discrète] + [le grade commun]";
+  "Cinematic editorial photograph, vertical composition + [la scène contemporaine : sujet, action, moment — dire aussi ce qui est absent] + [la direction de couleur, si elle sert le propos] + [l'objet vermillon et son sens] + [la touche futur discrète] + [le grade commun]";
 
 const recetteHex = color.recettes as Record<string, string>;
 const recettes = [
@@ -47,8 +47,8 @@ const recettes = [
 
   <Section eyebrow="02 · Les recettes" title="Des recettes de lumière" surface="tint">
     <p class="note">
-      Une paire par visuel : une dominante et son contrepoint. C'est le contrepoint qui rend la
-      couleur intelligente — un plan monochrome est un plan raté.
+      Cinq ambiances possibles, à choisir selon le propos — une direction artistique, pas des
+      règles. Une dominante suffit ; un contrepoint enrichit souvent le plan.
     </p>
     <div class="recettes">
       {
@@ -60,7 +60,7 @@ const recettes = [
                 {w.key} <span class="recette-hex">{recetteHex[w.key]}</span>
               </h3>
               <p class="recette-light">{w.light}</p>
-              <p class="recette-counter">contrepoint — {w.counter}</p>
+              <p class="recette-counter">contrepoint possible — {w.counter}</p>
             </div>
           </article>
         ))
@@ -68,7 +68,7 @@ const recettes = [
     </div>
   </Section>
 
-  <Section eyebrow="03 · Les règles" title="Vermillon sémantique & touche futur">
+  <Section eyebrow="03 · Les règles" title="Vermillon, touche futur, lieux d'aujourd'hui">
     <div class="rules">
       <div class="rule-card">
         <span class="rule-swatch"></span>
@@ -84,6 +84,14 @@ const recettes = [
         <p>
           Un détail impossible aujourd'hui, dans le coin de l'image : écran bombé ambré, e-paper,
           molette intelligente. Black Mirror doux — jamais d'hologramme ni de HUD.
+        </p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-icon" aria-hidden="true">◻</span>
+        <h3 class="type-titre">Des lieux contemporains</h3>
+        <p>
+          Le rétro vit dans le rendu (grain, halation), jamais dans le décor. Intérieurs modernes,
+          lignes nettes, mobilier actuel — pas de vieilles fermes ni de poutres rustiques.
         </p>
       </div>
     </div>
@@ -166,7 +174,7 @@ const recettes = [
     }
     .rules {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: var(--space-lg);
     }
     .rule-card {
