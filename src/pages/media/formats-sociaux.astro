@@ -1,0 +1,251 @@
+---
+import Base from "../../layouts/Base.astro";
+import Band from "../../components/Band.astro";
+import Section from "../../components/Section.astro";
+import DoctrineLink from "../../components/DoctrineLink.astro";
+import MediaNav from "../../components/MediaNav.astro";
+import formats from "../../../brand/tokens/formats.json";
+
+const social = Object.entries(formats.social).map(([key, f]) => ({ key, ...f }));
+
+const regles = [
+  {
+    t: "Plancher 32 px",
+    d: "Tout texte fait au moins 32 px (base 1080). La discrétion vient du gris et du placement, jamais d'une taille minuscule.",
+  },
+  {
+    t: "Retours à la ligne à la main",
+    d: "Unités de sens gardées ensemble, jamais un mot seul en dernière ligne.",
+  },
+  {
+    t: "Un seul vermillon porteur",
+    d: "Le mot actif, le filet, l'objet qui porte le sens — jamais décoratif.",
+  },
+  {
+    t: "Une ambiance par visuel",
+    d: "Papier quadrillé (clair, défaut) ou nocturne (encre + lueur vermillon).",
+  },
+  {
+    t: "Alterner en carrousel",
+    d: "Clair / nocturne d'une slide à l'autre — c'est ce qui donne le rythme.",
+  },
+  { t: "Coins libres", d: "Ni logo ni signature en coin. La DA suffit." },
+];
+
+const familles = [
+  {
+    key: "statement",
+    cas: "une prise de position, une idée en une phrase",
+    mode: "clair",
+    natif: "portrait",
+  },
+  {
+    key: "manifeste",
+    cas: "la même idée, en emphase maximale sur l'encre",
+    mode: "nocturne",
+    natif: "story",
+  },
+  {
+    key: "chiffre",
+    cas: "un résultat chiffré brut — le chiffre fait le hook",
+    mode: "clair",
+    natif: "carré",
+  },
+  { key: "liste", cas: "N étapes, N erreurs, N principes", mode: "clair", natif: "portrait" },
+  { key: "citation", cas: "la parole de quelqu'un d'autre", mode: "nocturne", natif: "portrait" },
+  {
+    key: "terminal",
+    cas: "un post technique (commande, recette n8n, Claude)",
+    mode: "nocturne",
+    natif: "lien",
+  },
+  { key: "carrousel-cover", cas: "la slide 1 d'un carrousel", mode: "clair", natif: "portrait" },
+  {
+    key: "image-editorial",
+    cas: "une image générée en grand, titre serif dessous",
+    mode: "clair",
+    natif: "portrait",
+  },
+];
+---
+
+<Base
+  title="Formats sociaux"
+  description="Le support réseaux sociaux : formats des visuels, règles d'affichage, familles de composition."
+>
+  <MediaNav />
+  <Band surface="grid" class="page-head">
+    <p class="eyebrow">Média · Support</p>
+    <h1 class="type-hero">Les formats sociaux.</h1>
+    <p class="lede">
+      LinkedIn en tête, Instagram, Threads. Le cadre et les règles du canal — l'esthétique vient du
+      socle, les styles d'image s'y posent tels quels.
+    </p>
+  </Band>
+
+  <Section eyebrow="01 · Les formats" title="Quatre cadres, un défaut">
+    <div class="formats">
+      {
+        social.map((f) => (
+          <article class="format">
+            <div class="format-frame" style={`--ratio:${f.w} / ${f.h}`} />
+            <h3 class="format-name">
+              {f.key}{" "}
+              <span class="format-dim">
+                {f.w} × {f.h} · {f.ratio}
+              </span>
+            </h3>
+            <p class="format-role">{f.role}</p>
+          </article>
+        ))
+      }
+    </div>
+    <p class="note">
+      Un visuel n'a pas de format figé : la composition est pilotée par ses dimensions cibles. En
+      flux elle suit un changement de ratio ; à positionnement tenu, on ajuste — et on revérifie à
+      l'œil.
+    </p>
+    <DoctrineLink slug="formats-sociaux" />
+  </Section>
+
+  <Section eyebrow="02 · Les règles" title="L'affichage" surface="tint">
+    <div class="regles">
+      {
+        regles.map((r) => (
+          <div class="regle">
+            <h3 class="regle-t">{r.t}</h3>
+            <p class="regle-d">{r.d}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section eyebrow="03 · Les familles" title="Huit compositions types">
+    <p class="note">
+      On choisit d'après la forme du contenu, jamais d'après l'esthétique — elle est commune à
+      toutes. Les gabarits HTML vivent dans le skill <code>creer-un-visuel-social</code>.
+    </p>
+    <div class="familles">
+      {
+        familles.map((f) => (
+          <article class="famille">
+            <img
+              src={`/assets/exemples/formats/social-${f.key}.png`}
+              alt={`Exemple de composition ${f.key}`}
+              loading="lazy"
+            />
+            <h3 class="famille-name">{f.key}</h3>
+            <p class="famille-cas">{f.cas}</p>
+            <p class="famille-meta">
+              {f.mode} · natif {f.natif}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <style>
+    .page-head :global(.band-inner) {
+      padding-block: var(--space-2xl) var(--space-xl);
+    }
+    .page-head .type-hero {
+      margin-top: var(--space-md);
+    }
+    .lede {
+      margin-top: var(--space-lg);
+      max-width: 54ch;
+      font-family: var(--font-serif);
+      font-size: var(--text-corps);
+      line-height: 1.4;
+    }
+    .note {
+      margin-top: var(--space-lg);
+      color: var(--muted);
+      max-width: 62ch;
+    }
+    .note code {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+    }
+    .formats {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--space-lg);
+      align-items: end;
+    }
+    .format-frame {
+      aspect-ratio: var(--ratio);
+      max-height: 240px;
+      margin-inline: auto;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+      background: var(--surface-tint);
+    }
+    .format-name {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      margin: var(--space-md) 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5em;
+    }
+    .format-dim {
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+      color: var(--muted);
+    }
+    .format-role {
+      margin: 0.3em 0 0;
+      color: var(--muted);
+    }
+    .regles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+    .regle {
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+    }
+    .regle-t {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      margin: 0;
+    }
+    .regle-d {
+      margin: 0.5em 0 0;
+      color: var(--muted);
+    }
+    .familles {
+      margin-top: var(--space-lg);
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--space-lg);
+    }
+    .famille img {
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+    }
+    .famille-name {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      margin: var(--space-sm) 0 0;
+    }
+    .famille-cas {
+      margin: 0.3em 0 0;
+      color: var(--fg);
+    }
+    .famille-meta {
+      margin: 0.3em 0 0;
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+      color: var(--muted);
+    }
+  </style>
+</Base>
