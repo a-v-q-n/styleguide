@@ -4,7 +4,8 @@ La direction artistique des images générées (IA ou photo) de la marque. L'uni
 indépendant, décalé de deux degrés vers le futur, photographié comme un film 35 mm des années 70.
 Crédible d'abord, futur ensuite, rétro dans le rendu. Références : _Her_ (le futur chaleureux),
 _Severance_ (cadres tenus, rétro-bureau), _Foundation_ (colorimétrie en paires désaturées),
-pellicule Cinestill 800T (la halation).
+pellicule Cinestill 800T (la halation). C'est le style **photo**, l'un des deux styles d'image de
+la marque — l'autre, le **schéma** (`da-schema`), explique les idées et les structures.
 
 ## Le grade commun (obligatoire, chaque image)
 

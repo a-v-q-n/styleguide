@@ -1,0 +1,213 @@
+---
+import Base from "../../layouts/Base.astro";
+import Band from "../../components/Band.astro";
+import Section from "../../components/Section.astro";
+import CopyBlock from "../../components/CopyBlock.astro";
+import DoctrineLink from "../../components/DoctrineLink.astro";
+import MediaNav from "../../components/MediaNav.astro";
+import manifest from "../../../brand/assets/exemples/manifest.json";
+
+const grade =
+  "Precise fine ink lineart on warm cream paper (#FAF8F3), warm dark ink (#211C17). Simple mechanical objects drawn with thin lines and light hatching — the charm of an old technical drawing, without any characters, figures or robots. Small lowercase French technical annotations with thin leader lines, only labels that carry meaning. Generous margins and negative space. No border, no frame, no cartouche, no ornaments, flat scan look, not a photograph of a document, no 3D render, no gradients.";
+
+const gabarit =
+  "Technical documentation figure explaining + [ce qu'on montre : les unités mécaniques, leur disposition, les labels exacts en français] + [l'élément vermillon et son sens — « the only vermilion element »] + [le grade commun]";
+
+const galerie = manifest.schema;
+---
+
+<Base
+  title="Image schéma"
+  description="La figure technique : le style d'image qui explique — mécanismes à l'encre, un vermillon porteur, labels courts."
+>
+  <MediaNav />
+  <Band surface="grid" class="page-head">
+    <p class="eyebrow">Média · Style d'image</p>
+    <h1 class="type-hero">La figure technique.</h1>
+    <p class="lede">
+      Le style qui explique : une idée, un flux, un système. Le dessin technique à l'ancienne —
+      trait d'encre, hachures, annotations — au service des sujets d'aujourd'hui. La photo montre un
+      monde ; le schéma montre une structure.
+    </p>
+  </Band>
+
+  <Section eyebrow="01 · La métaphore" title="Des mécanismes, pas des icônes">
+    <p class="note">
+      Les concepts numériques deviennent des mécanismes simples : l'agent est un boîtier
+      d'engrenages, les skills des plaques gravées, les tools des outils pendus, la boucle une
+      courroie circulaire. Jamais de personnages, jamais de robots, jamais d'écrans — des pièces.
+    </p>
+    <DoctrineLink slug="da-schema" />
+  </Section>
+
+  <Section eyebrow="02 · Les règles" title="Vermillon, labels, papier nu" surface="tint">
+    <div class="rules">
+      <div class="rule-card">
+        <span class="rule-swatch"></span>
+        <h3 class="type-titre">Un vermillon qui désigne</h3>
+        <p>
+          Un seul élément vermillon <code>#E0542B</code> par figure — l'agent, le déclencheur, la boucle.
+          Tout le reste est encre sur papier crème.
+        </p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-icon" aria-hidden="true">a</span>
+        <h3 class="type-titre">Des labels courts</h3>
+        <p>
+          Quelques mots en français, en minuscules, avec de fines lignes d'attache — seulement là où
+          le sens l'exige. L'exception propre à ce style ; côté photo, « jamais de texte » reste
+          absolu.
+        </p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-icon" aria-hidden="true">◫</span>
+        <h3 class="type-titre">Ni cadre ni cartouche</h3>
+        <p>
+          La figure vit nue sur son papier : marges généreuses, hachures légères, scan à plat —
+          jamais la photo d'un document posé, ni 3D, ni dégradés.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section eyebrow="03 · Le grade" title="La signature commune">
+    <p class="note">
+      Tout prompt schéma se termine par le même grade — c'est lui qui unit la banque.
+    </p>
+    <CopyBlock code={grade} />
+    <DoctrineLink slug="da-schema" />
+  </Section>
+
+  <Section eyebrow="04 · Le gabarit" title="Écrire un prompt" surface="tint">
+    <CopyBlock code={gabarit} />
+    <p class="note">
+      Fixer l'intention — la phrase que la figure porte toute seule — avant de générer. Format carré
+      par défaut.
+    </p>
+  </Section>
+
+  <Section eyebrow="05 · La banque" title="Des figures avec un propos">
+    <p class="note">
+      La référence du style : chaque figure entre dans la banque avec sa phrase et le prompt exact
+      qui l'a produite.
+    </p>
+    <div class="galerie">
+      {
+        galerie.map((g) => (
+          <article class="galerie-item">
+            <img
+              src={`/assets/exemples/${g.fichier}`}
+              alt={`${g.nom} — ${g.intention}`}
+              loading="lazy"
+            />
+            <p class="galerie-nom">{g.nom}</p>
+            <p class="galerie-intention">« {g.intention} »</p>
+            <details class="galerie-prompt">
+              <summary>le prompt</summary>
+              <CopyBlock code={g.prompt} />
+            </details>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <style>
+    .page-head :global(.band-inner) {
+      padding-block: var(--space-2xl) var(--space-xl);
+    }
+    .page-head .type-hero {
+      margin-top: var(--space-md);
+    }
+    .lede {
+      margin-top: var(--space-lg);
+      max-width: 54ch;
+      font-family: var(--font-serif);
+      font-size: var(--text-corps);
+      line-height: 1.4;
+    }
+    .note {
+      margin-bottom: var(--space-lg);
+      color: var(--muted);
+      max-width: 62ch;
+    }
+    .note:last-child {
+      margin-bottom: 0;
+      margin-top: var(--space-lg);
+    }
+    .rules {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+    .rule-card {
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      display: grid;
+      gap: 0.6em;
+      align-content: start;
+    }
+    .rule-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .rule-card code {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      color: var(--accent);
+    }
+    .rule-swatch {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--color-vermillon);
+    }
+    .rule-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      line-height: 1;
+      font-family: var(--font-serif);
+      font-style: italic;
+    }
+    .galerie {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-lg);
+    }
+    .galerie-item img {
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+    }
+    .galerie-nom {
+      margin: var(--space-sm) 0 0;
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .galerie-intention {
+      margin: 0.25em 0 0;
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      line-height: 1.3;
+    }
+    .galerie-prompt {
+      margin-top: var(--space-sm);
+    }
+    .galerie-prompt summary {
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .galerie-prompt[open] summary {
+      color: var(--fg);
+    }
+  </style>
+</Base>

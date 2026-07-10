@@ -14,7 +14,9 @@ const required = [
   "media/index.html",
   "media/photo/index.html",
   "media/formats-sociaux/index.html",
+  "media/schema/index.html",
   "doctrine/formats-sociaux.md",
+  "doctrine/da-schema.md",
   "tokens.json",
   "tokens.css",
   "llms.txt",
@@ -22,6 +24,7 @@ const required = [
   "doctrine/da-image.md",
   "assets/logo/logo-noir.svg",
   "assets/exemples/photo/admin-deborde.jpg",
+  "assets/exemples/schema/agent-skills-tools.jpg",
   "favicon.svg",
 ];
 

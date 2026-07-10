@@ -81,5 +81,27 @@
       "prompt": "Cinematic editorial photograph, vertical composition. Dusk in a modern reading corner: contemporary lounge chair in wool bouclé, minimal light oak shelf, large window with the last violet light, clean modern apartment. Muted plum and violet shadows dominate, counterpointed by one warm pool of light from a modern arc lamp. A person reading a printed page in deep focus, face softly lit, emotion legible. One vermilion (#E0542B) page marker shows exactly where the important part is. Future touch: a soft flexible reader lying on the side table, its surface out of focus and unreadable. Contemporary interior, modern design furniture, resolutely modern space, no vintage furniture, no old bookshelves wall, no old farmhouse; the retro lives only in the film rendering. Still, calm, almost silent frame. shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border"
     }
   ],
-  "schema": []
+  "schema": [
+    {
+      "fichier": "schema/agent-skills-tools.jpg",
+      "style": "schema",
+      "nom": "agent-skills-tools",
+      "intention": "Un agent = un moteur + des skills + des tools.",
+      "prompt": "Technical documentation figure explaining an AI agent: in the center, a compact mechanical gearbox unit labeled \"agent\", drawn in vermilion (#E0542B) — the only vermilion element. On the left, a rack of small interchangeable engraved plates labeled \"skills\", reference letter a. On the right, a rail of small hanging tool attachments labeled \"tools\", reference letter b. Thin connection lines from the skills rack and the tools rail into the agent unit. No other labels. Precise fine ink lineart on warm cream paper (#FAF8F3), warm dark ink (#211C17). Simple mechanical objects drawn with thin lines and light hatching — the charm of an old technical drawing, without any characters, figures or robots. Small lowercase French technical annotations with thin leader lines, only labels that carry meaning. Generous margins and negative space. No border, no frame, no cartouche, no ornaments, flat scan look, not a photograph of a document, no 3D render, no gradients."
+    },
+    {
+      "fichier": "schema/workflow-n8n.jpg",
+      "style": "schema",
+      "nom": "workflow-n8n",
+      "intention": "Un workflow : déclencheur, actions, sortie.",
+      "prompt": "Technical documentation figure explaining an n8n automation workflow: a horizontal chain of five small compact mechanical node units (small boxes with subtle gear details and light hatching) connected left to right by thin wire lines. The first unit, labeled \"déclencheur\", is drawn in vermilion (#E0542B) — the only vermilion element. After the second unit the line branches into two parallel paths through two units labeled \"actions\", which rejoin into a final unit labeled \"sortie\". Small reference letters a to e near the units. No other labels. Precise fine ink lineart on warm cream paper (#FAF8F3), warm dark ink (#211C17). Simple mechanical objects drawn with thin lines and light hatching — the charm of an old technical drawing, without any characters, figures or robots. Small lowercase French technical annotations with thin leader lines, only labels that carry meaning. Generous margins and negative space. No border, no frame, no cartouche, no ornaments, flat scan look, not a photograph of a document, no 3D render, no gradients."
+    },
+    {
+      "fichier": "schema/loop-sub-agents.jpg",
+      "style": "schema",
+      "nom": "loop-sub-agents",
+      "intention": "L'orchestrateur boucle, les sous-agents exécutent.",
+      "prompt": "Technical documentation figure explaining an orchestration loop with sub-agents: at the top, one compact mechanical gearbox unit labeled \"orchestrateur\"; below it, three small identical plain mechanical modules labeled \"sous-agents\" — simple boxes with subtle gear details, absolutely no robots, no arms, no characters. Thin lines dispatch work downward from the orchestrator to the modules and return results upward. A large circular arrow path around the whole cycle, labeled \"la boucle\", drawn in vermilion (#E0542B) — the only vermilion element. Small reference letters. No other labels. Precise fine ink lineart on warm cream paper (#FAF8F3), warm dark ink (#211C17). Simple mechanical objects drawn with thin lines and light hatching — the charm of an old technical drawing, without any characters, figures or robots. Small lowercase French technical annotations with thin leader lines, only labels that carry meaning. Generous margins and negative space. No border, no frame, no cartouche, no ornaments, flat scan look, not a photograph of a document, no 3D render, no gradients."
+    }
+  ]
 }
