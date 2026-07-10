@@ -1,10 +1,11 @@
 ---
-import Base from "../layouts/Base.astro";
-import Band from "../components/Band.astro";
-import Section from "../components/Section.astro";
-import CopyBlock from "../components/CopyBlock.astro";
-import DoctrineLink from "../components/DoctrineLink.astro";
-import color from "../../brand/tokens/color.json";
+import Base from "../../layouts/Base.astro";
+import Band from "../../components/Band.astro";
+import Section from "../../components/Section.astro";
+import CopyBlock from "../../components/CopyBlock.astro";
+import DoctrineLink from "../../components/DoctrineLink.astro";
+import MediaNav from "../../components/MediaNav.astro";
+import color from "../../../brand/tokens/color.json";
 
 const grade =
   "shot on 35mm film, fine film grain, subtle halation on highlights, muted desaturated Kodak color palette, warm blacks (#211C17), cream highlights (#FAF8F3), soft directional light, shallow depth of field, carefully composed editorial frame, no readable text anywhere, no frame line, no border";
@@ -23,11 +24,12 @@ const recettes = [
 ---
 
 <Base
-  title="DA image"
+  title="Image photo"
   description="« L'anticipation douce » : la direction artistique des images AVQN — grade 35mm, recettes de lumière, vermillon sémantique."
 >
+  <MediaNav />
   <Band surface="grid" class="page-head">
-    <p class="eyebrow">Direction artistique · Image</p>
+    <p class="eyebrow">Média · Style d'image</p>
     <h1 class="type-hero">« L'anticipation douce ».</h1>
     <p class="lede">
       Le monde d'un indépendant, décalé de deux degrés vers le futur, photographié comme un film 35
@@ -48,17 +50,17 @@ const recettes = [
       Une paire par visuel : une dominante et son contrepoint. C'est le contrepoint qui rend la
       couleur intelligente — un plan monochrome est un plan raté.
     </p>
-    <div class="worlds">
+    <div class="recettes">
       {
         recettes.map((w) => (
-          <article class="world">
-            <div class="world-chip" style={`--c:${recetteHex[w.key]}`} />
-            <div class="world-body">
-              <h3 class="world-name">
-                {w.key} <span class="world-hex">{recetteHex[w.key]}</span>
+          <article class="recette">
+            <div class="recette-chip" style={`--c:${recetteHex[w.key]}`} />
+            <div class="recette-body">
+              <h3 class="recette-name">
+                {w.key} <span class="recette-hex">{recetteHex[w.key]}</span>
               </h3>
-              <p class="world-light">{w.light}</p>
-              <p class="world-counter">contrepoint — {w.counter}</p>
+              <p class="recette-light">{w.light}</p>
+              <p class="recette-counter">contrepoint — {w.counter}</p>
             </div>
           </article>
         ))
@@ -119,12 +121,12 @@ const recettes = [
       margin-bottom: 0;
       margin-top: var(--space-lg);
     }
-    .worlds {
+    .recettes {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: var(--space-lg);
     }
-    .world {
+    .recette {
       display: flex;
       gap: var(--space-md);
       align-items: stretch;
@@ -132,13 +134,13 @@ const recettes = [
       border-radius: var(--radius-md);
       padding: var(--space-md);
     }
-    .world-chip {
+    .recette-chip {
       flex: none;
       width: 56px;
       border-radius: var(--radius-sm);
       background: var(--c);
     }
-    .world-name {
+    .recette-name {
       font-family: var(--font-serif);
       font-size: 1.5rem;
       margin: 0;
@@ -147,17 +149,17 @@ const recettes = [
       align-items: baseline;
       gap: 0.5em;
     }
-    .world-hex {
+    .recette-hex {
       font-family: var(--font-mono);
       font-size: var(--text-meta);
       color: var(--muted);
       text-transform: none;
     }
-    .world-light {
+    .recette-light {
       margin: 0.3em 0 0;
       color: var(--fg);
     }
-    .world-counter {
+    .recette-counter {
       margin: 0.2em 0 0;
       color: var(--muted);
       font-size: 0.95rem;
