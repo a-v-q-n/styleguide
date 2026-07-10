@@ -46,6 +46,9 @@ function fixture() {
     clair: { color: "rgba(33,28,23,.04)", step: "46px" },
     nocturne: { color: "rgba(250,248,243,.055)", step: "120px" },
   });
+  T("formats.json", {
+    social: { portrait: { w: 1080, h: 1350, ratio: "4:5", role: "défaut, portée maximale" } },
+  });
   writeFileSync(
     join(doctrineDir, "couleur.md"),
     "# Couleur\n\nLe contraste chaud est le socle de la marque.\n",
@@ -90,6 +93,7 @@ test("buildExports génère tokens.json agrégé et parseable", () => {
   const json = JSON.parse(readFileSync(join(f.out, "tokens.json"), "utf8"));
   assert.equal(json.color.base.vermillon, "#E0542B");
   assert.equal(json.typography.floorPx, 32);
+  assert.equal(json.formats.social.portrait.w, 1080);
 });
 
 test("buildExports génère llms.txt avec titre, règles et liens doctrine", () => {
