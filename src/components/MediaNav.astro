@@ -1,0 +1,83 @@
+---
+// Sous-nav de la section Média : les styles d'image (le langage), puis les supports (les canaux).
+const groups = [
+  {
+    label: "Styles d'image",
+    items: [{ href: "/media/photo", label: "Image photo" }],
+  },
+  {
+    label: "Supports",
+    items: [{ href: "/media/formats-sociaux", label: "Formats sociaux" }],
+  },
+];
+const here = Astro.url.pathname.replace(/\/+$/, "") || "/";
+---
+
+<nav class="media-nav" aria-label="Section Média">
+  <div class="wrap media-nav-inner">
+    <a href="/media" class="media-link media-home" aria-current={here === "/media" ? "page" : undefined}>
+      Média
+    </a>
+    {
+      groups.map((g) => (
+        <span class="media-group">
+          <span class="media-group-label">{g.label}</span>
+          {g.items.map((i) => (
+            <a
+              href={i.href}
+              class="media-link"
+              aria-current={here === i.href ? "page" : undefined}
+            >
+              {i.label}
+            </a>
+          ))}
+        </span>
+      ))
+    }
+  </div>
+</nav>
+
+<style>
+  .media-nav {
+    border-bottom: 1px solid var(--rule);
+    background: var(--surface-tint);
+  }
+  .media-nav-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-md) var(--space-lg);
+    padding-block: var(--space-sm);
+  }
+  .media-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-sm) var(--space-md);
+  }
+  .media-group-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+  .media-link {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--fg);
+    text-decoration: none;
+    padding-block: 0.2em;
+    border-bottom: 2px solid transparent;
+  }
+  .media-link:hover {
+    border-bottom-color: var(--rule);
+  }
+  .media-link[aria-current="page"] {
+    border-bottom-color: var(--accent);
+  }
+  .media-home {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+  }
+</style>

@@ -1,0 +1,134 @@
+---
+import Base from "../../layouts/Base.astro";
+import Band from "../../components/Band.astro";
+import MediaNav from "../../components/MediaNav.astro";
+
+const familles = [
+  {
+    label: "Styles d'image",
+    note: "Le langage — un style peut atterrir sur n'importe quel support.",
+    items: [
+      {
+        href: "/media/photo",
+        label: "Image photo",
+        note: "« L'anticipation douce » : 35 mm, recettes de lumière, vermillon sémantique.",
+      },
+    ],
+  },
+  {
+    label: "Supports",
+    note: "Les déclinaisons — chaque canal a ses formats et ses règles.",
+    items: [
+      {
+        href: "/media/formats-sociaux",
+        label: "Formats sociaux",
+        note: "LinkedIn, Instagram, Threads : formats, règles d'affichage, familles de composition.",
+      },
+    ],
+  },
+];
+---
+
+<Base
+  title="Média"
+  description="Le langage visuel des médias AVQN : styles d'image générée et supports de diffusion."
+>
+  <MediaNav />
+  <Band surface="grid" class="page-head">
+    <p class="eyebrow">Média</p>
+    <h1 class="type-hero">Des styles, des supports.</h1>
+    <p class="lede">
+      Les <em>styles d'image</em> disent comment une image de la marque se fabrique ; les
+      <em>supports</em> disent où elle atterrit — formats et règles de chaque canal.
+    </p>
+  </Band>
+
+  <Band surface="plain" bordered>
+    <div class="familles">
+      {
+        familles.map((f) => (
+          <div class="famille">
+            <p class="eyebrow">{f.label}</p>
+            <p class="famille-note">{f.note}</p>
+            <div class="famille-cards">
+              {f.items.map((i) => (
+                <a href={i.href} class="card map-card">
+                  <span class="map-label type-titre">{i.label}</span>
+                  <span class="map-note">{i.note}</span>
+                  <span class="map-go" aria-hidden="true">
+                    →
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Band>
+
+  <style>
+    .page-head :global(.band-inner) {
+      padding-block: var(--space-2xl) var(--space-xl);
+    }
+    .page-head .type-hero {
+      margin-top: var(--space-md);
+    }
+    .lede {
+      margin-top: var(--space-lg);
+      max-width: 54ch;
+      font-family: var(--font-serif);
+      font-size: var(--text-corps);
+      line-height: 1.4;
+    }
+    .lede em {
+      color: var(--accent);
+    }
+    .familles {
+      display: grid;
+      gap: var(--space-xl);
+    }
+    .famille-note {
+      margin: 0.5em 0 0;
+      color: var(--muted);
+    }
+    .famille-cards {
+      margin-top: var(--space-md);
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+    /* Styles map-* : scopés par page en Astro — recopiés de index.astro (.card est global). */
+    .map-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-areas: "label go" "note go";
+      align-items: start;
+      gap: 0.4em 0;
+      text-decoration: none;
+      color: var(--fg);
+      transition:
+        border-color var(--motion-vif) ease,
+        transform var(--motion-vif) ease;
+    }
+    .map-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .map-label {
+      grid-area: label;
+    }
+    .map-note {
+      grid-area: note;
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 34ch;
+    }
+    .map-go {
+      grid-area: go;
+      align-self: center;
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+  </style>
+</Base>

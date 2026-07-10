@@ -10,7 +10,11 @@ const required = [
   "fondations/index.html",
   "composants/index.html",
   "logo/index.html",
-  "da-image/index.html",
+  "da-image/index.html", // page de renvoi générée par la redirection
+  "media/index.html",
+  "media/photo/index.html",
+  "media/formats-sociaux/index.html",
+  "doctrine/formats-sociaux.md",
   "tokens.json",
   "tokens.css",
   "llms.txt",

@@ -18,7 +18,7 @@ const nav = [
   { href: "/fondations", label: "Fondations" },
   { href: "/composants", label: "Composants" },
   { href: "/logo", label: "Logo" },
-  { href: "/da-image", label: "DA image" },
+  { href: "/media", label: "Média" },
 ];
 const here = Astro.url.pathname.replace(/\/+$/, "") || "/";
 ---
@@ -60,7 +60,7 @@ const here = Astro.url.pathname.replace(/\/+$/, "") || "/";
               <a
                 href={item.href}
                 class="nav-link"
-                aria-current={here === item.href ? "page" : undefined}
+                aria-current={here === item.href || here.startsWith(item.href + "/") ? "page" : undefined}
               >
                 {item.label}
               </a>

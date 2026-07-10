@@ -7,5 +7,6 @@ export default defineConfig({
   site: "https://styleguide.avqn.ch",
   output: "static",
   build: { format: "directory" },
+  redirects: { "/da-image": "/media/photo" },
   vite: { plugins: [tailwindcss()] },
 });
