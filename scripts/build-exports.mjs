@@ -61,32 +61,38 @@ function readDoctrines(doctrineDir) {
     });
 }
 
+// Le loader globe les JSON présents : chaque famille est optionnelle et une
+// famille absente ne doit jamais faire planter le générateur.
+function entries(family) {
+  return Object.entries(family ?? {});
+}
+
 function renderCss(t) {
-  const c = t.color.base;
-  const w = t.color.worlds;
-  const ty = t.typography;
+  const c = t.color?.base ?? {};
+  const ty = t.typography ?? {};
   const L = [];
   L.push("/* GÉNÉRÉ par scripts/build-exports.mjs depuis brand/tokens — NE PAS ÉDITER. */");
   L.push(":root {");
-  L.push(`  --color-paper: ${c.paper};`);
-  L.push(`  --color-ink: ${c.ink};`);
-  L.push(`  --color-vermillon: ${c.vermillon};`);
-  L.push(`  --color-grey: ${c.grey};`);
-  L.push(`  --color-grey-night: ${c.greyNight};`);
-  L.push(`  --color-filet: ${c.filet};`);
-  for (const [k, v] of Object.entries(w)) L.push(`  --world-${k}: ${v};`);
-  for (const [k, v] of Object.entries(ty.families)) L.push(`  --font-${k}: ${v};`);
-  for (const [role, def] of Object.entries(ty.scale)) L.push(`  --text-${role}: ${def.web};`);
-  for (const [k, v] of Object.entries(t.space)) L.push(`  --space-${k}: ${v};`);
-  for (const [k, v] of Object.entries(t.radius)) L.push(`  --radius-${k}: ${v};`);
-  for (const [k, v] of Object.entries(t.elevation)) L.push(`  --elevation-${k}: ${v};`);
-  for (const [k, v] of Object.entries(t.motion)) L.push(`  --motion-${k}: ${v};`);
-  L.push(`  --glow-vermillon: ${t.glow.vermillon};`);
-  L.push(`  --glow-vignette: ${t.glow.vignette};`);
-  L.push(`  --grid-clair-color: ${t.grid.clair.color};`);
-  L.push(`  --grid-clair-step: ${t.grid.clair.step};`);
-  L.push(`  --grid-nocturne-color: ${t.grid.nocturne.color};`);
-  L.push(`  --grid-nocturne-step: ${t.grid.nocturne.step};`);
+  for (const [k, v] of entries(c)) {
+    L.push(`  --color-${k.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase()}: ${v};`);
+  }
+  for (const [k, v] of entries(t.color?.worlds)) L.push(`  --world-${k}: ${v};`);
+  for (const [k, v] of entries(ty.families)) L.push(`  --font-${k}: ${v};`);
+  for (const [role, def] of entries(ty.scale)) L.push(`  --text-${role}: ${def.web};`);
+  for (const [k, v] of entries(t.space)) L.push(`  --space-${k}: ${v};`);
+  for (const [k, v] of entries(t.radius)) L.push(`  --radius-${k}: ${v};`);
+  for (const [k, v] of entries(t.elevation)) L.push(`  --elevation-${k}: ${v};`);
+  for (const [k, v] of entries(t.motion)) L.push(`  --motion-${k}: ${v};`);
+  if (t.glow) {
+    L.push(`  --glow-vermillon: ${t.glow.vermillon};`);
+    L.push(`  --glow-vignette: ${t.glow.vignette};`);
+  }
+  if (t.grid) {
+    L.push(`  --grid-clair-color: ${t.grid.clair.color};`);
+    L.push(`  --grid-clair-step: ${t.grid.clair.step};`);
+    L.push(`  --grid-nocturne-color: ${t.grid.nocturne.color};`);
+    L.push(`  --grid-nocturne-step: ${t.grid.nocturne.step};`);
+  }
   // Rôles sémantiques — clair par défaut.
   L.push(`  --bg: var(--color-paper);`);
   L.push(`  --fg: var(--color-ink);`);
@@ -111,7 +117,7 @@ function renderCss(t) {
   L.push(`  --surface-tint: color-mix(in srgb, var(--fg) 3.5%, var(--bg));`);
   L.push("}");
   // Classes de rôle typographique — le dogfood : les pages écrivent .type-hero, etc.
-  for (const [role, def] of Object.entries(ty.scale)) {
+  for (const [role, def] of entries(ty.scale)) {
     const decl = [`font-family: var(--font-${def.family})`, `font-size: var(--text-${role})`];
     if (def.leading) decl.push(`line-height: ${def.leading}`);
     if (def.weight) decl.push(`font-weight: ${def.weight}`);
@@ -123,9 +129,9 @@ function renderCss(t) {
 }
 
 function renderLlms(t, doctrines, siteUrl) {
-  const c = t.color.base;
-  const w = t.color.worlds;
-  const ty = t.typography;
+  const c = t.color?.base ?? {};
+  const w = t.color?.worlds ?? {};
+  const ty = t.typography ?? {};
   const L = [];
   L.push("# Charte AVQN — livre de marque");
   L.push("");
@@ -152,15 +158,15 @@ function renderLlms(t, doctrines, siteUrl) {
     `- papier ${c.paper} · encre ${c.ink} · vermillon ${c.vermillon} · gris ${c.grey} (nocturne ${c.greyNight}) · filet ${c.filet}`,
   );
   L.push(
-    `- Mondes-couleur (DA image, paires de lumière) : ${Object.entries(w)
+    `- Mondes-couleur (DA image, paires de lumière) : ${entries(w)
       .map(([k, v]) => `${k} ${v}`)
       .join(" · ")}`,
   );
   L.push("");
   L.push("## Typographie");
-  L.push(`- Familles : ${Object.values(ty.families).join(" · ")}`);
+  L.push(`- Familles : ${Object.values(ty.families ?? {}).join(" · ")}`);
   L.push(
-    `- Rôles : ${Object.keys(ty.scale).join(", ")} (échelle web fluide + référence canvas 1080 dans tokens.json).`,
+    `- Rôles : ${Object.keys(ty.scale ?? {}).join(", ")} (échelle web fluide + référence canvas 1080 dans tokens.json).`,
   );
   L.push("");
   L.push("## Ambiances");

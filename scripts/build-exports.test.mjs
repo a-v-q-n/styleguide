@@ -40,6 +40,7 @@ function fixture() {
   T("space.json", { md: "16px" });
   T("radius.json", { md: "6px" });
   T("elevation.json", { flat: "none" });
+  T("motion.json", { vif: "150ms", souffle: "2400ms" });
   T("glow.json", { vermillon: "radial-gradient(a)", vignette: "radial-gradient(b)" });
   T("grid.json", {
     clair: { color: "rgba(33,28,23,.04)", step: "46px" },
@@ -71,6 +72,8 @@ test("buildExports génère tokens.css avec vars claires et override nocturne", 
   assert.match(css, /--color-vermillon:\s*#E0542B/);
   assert.match(css, /\[data-theme="night"\]/);
   assert.match(css, /--fg:\s*var\(--color-paper\)/); // nocturne inverse le fg
+  assert.match(css, /--motion-vif:\s*150ms/);
+  assert.match(css, /--motion-souffle:\s*2400ms/);
   assert.match(css, /\.type-hero\s*\{/);
   assert.match(css, /\.type-eyebrow\s*\{[^}]*text-transform: uppercase/);
 });
@@ -101,6 +104,32 @@ test("buildExports génère llms.txt avec titre, règles et liens doctrine", () 
   assert.match(llms, /Non-négociables/);
   assert.match(llms, /Couleur — Le contraste chaud/);
   assert.match(llms, /styleguide\.avqn\.ch\/doctrine\/couleur\.md/);
+});
+
+test("buildExports tolère une famille de tokens absente", () => {
+  // Le loader globe les JSON présents : seuls color et typography ici —
+  // ni motion, ni glow, ni grid, ni space/radius/elevation.
+  const dir = mkdtempSync(join(tmpdir(), "sg-partiel-"));
+  const tokensDir = join(dir, "tokens");
+  mkdirSync(tokensDir);
+  writeFileSync(
+    join(tokensDir, "color.json"),
+    JSON.stringify({ base: { paper: "#FAF8F3", ink: "#211C17" }, worlds: {} }),
+  );
+  writeFileSync(
+    join(tokensDir, "typography.json"),
+    JSON.stringify({ families: { serif: "serif" }, scale: {} }),
+  );
+  buildExports({
+    tokensDir,
+    doctrineDir: join(dir, "doctrine"),
+    outSiteCss: join(dir, "src", "styles", "tokens.css"),
+    outPublicDir: join(dir, "public"),
+  });
+  const css = readFileSync(join(dir, "public", "tokens.css"), "utf8");
+  assert.match(css, /--color-paper:\s*#FAF8F3/);
+  assert.doesNotMatch(css, /--motion-/);
+  assert.doesNotMatch(css, /--glow-/);
 });
 
 test("buildExports copie la doctrine brute et écrit le CSS du site", () => {
