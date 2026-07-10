@@ -1,0 +1,220 @@
+---
+import Base from "../../layouts/Base.astro";
+import Band from "../../components/Band.astro";
+import Section from "../../components/Section.astro";
+import DoctrineLink from "../../components/DoctrineLink.astro";
+import MediaNav from "../../components/MediaNav.astro";
+import formats from "../../../brand/tokens/formats.json";
+import manifest from "../../../brand/assets/exemples/manifest.json";
+
+const fmts = Object.entries(formats.ressource).map(([key, f]) => ({ key, ...f }));
+
+const formesAccroche = [
+  { t: "Le verbe d'apprentissage", d: "« Savoir… », « Comprendre… », « Bien… » + le sujet." },
+  { t: "Le périmètre chiffré", d: "« Les N … pour … », « N commandes, N gestes »." },
+  { t: "La durée réelle", d: "« X en N minutes » — correspond à la réalité de la ressource." },
+  { t: "Le libellé descriptif", d: "« Sujet : ce que c'est. »" },
+];
+---
+
+<Base
+  title="Ressources"
+  description="Le support bibliothèque : covers à accroche-objectif et illustrations maquette des ressources."
+>
+  <MediaNav />
+  <Band surface="grid" class="page-head">
+    <p class="eyebrow">Média · Composition</p>
+    <h1 class="type-hero">Les ressources.</h1>
+    <p class="lede">
+      Deux visuels par ressource : la <em>cover</em> qui dit ce qu'on va apprendre, et l'<em
+        >illustration</em
+      > qui enseigne un élément d'interface. Composés en HTML, rendus via la médiathèque.
+    </p>
+  </Band>
+
+  <Section eyebrow="01 · Les formats" title="Deux cadres">
+    <div class="formats">
+      {
+        fmts.map((f) => (
+          <article class="format">
+            <div class="format-frame" style={`--ratio:${f.w} / ${f.h}`} />
+            <h3 class="format-name">
+              {f.key}{" "}
+              <span class="format-dim">
+                {f.w} × {f.h} · {f.ratio}
+              </span>
+            </h3>
+            <p class="format-role">{f.role}</p>
+          </article>
+        ))
+      }
+    </div>
+    <DoctrineLink slug="ressources" />
+  </Section>
+
+  <Section eyebrow="02 · La cover" title="Une accroche-objectif, rien d'autre" surface="tint">
+    <p class="note">
+      L'accroche dit ce qu'on va apprendre, lisible sans le titre — et passe deux tests : la clarté
+      (on comprend le sujet en lisant seulement l'image) et l'anti-slogan (si la phrase pourrait
+      vendre autre chose, on jette). C'est le seul texte de la cover.
+    </p>
+    <div class="regles">
+      {
+        formesAccroche.map((r) => (
+          <div class="regle">
+            <h3 class="regle-t">{r.t}</h3>
+            <p class="regle-d">{r.d}</p>
+          </div>
+        ))
+      }
+    </div>
+    <p class="note">
+      Le climat suit la nature du sujet — nocturne pour le technique, clair pour les concepts — et
+      l'objet central évoque la nature du contenu. Le type cheatsheet porte son badge, l'unique
+      exception aux labels.
+    </p>
+    <div class="galerie galerie--wide">
+      {
+        manifest.cover.map((g) => (
+          <article class="galerie-item">
+            <img
+              src={`/assets/exemples/${g.fichier}`}
+              alt={`Cover — ${g.accroche}`}
+              loading="lazy"
+            />
+            <p class="galerie-nom">{g.nom}</p>
+            <p class="galerie-intention">« {g.accroche} »</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section eyebrow="03 · L'illustration" title="La maquette filaire">
+    <p class="note">
+      Une illustration = un élément d'interface enseigné. La fausse UI recule — traits filet, textes
+      gris, labels réels en Geist — et l'élément enseigné est le seul porteur du vermillon, mise en
+      évidence + annotation eyebrow. L'esprit de la figure technique, en interface.
+    </p>
+    <div class="galerie">
+      {
+        manifest.maquette.map((g) => (
+          <article class="galerie-item">
+            <img
+              src={`/assets/exemples/${g.fichier}`}
+              alt={`${g.nom} — ${g.intention}`}
+              loading="lazy"
+            />
+            <p class="galerie-nom">{g.nom}</p>
+            <p class="galerie-intention">« {g.intention} »</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <style>
+    .page-head :global(.band-inner) {
+      padding-block: var(--space-2xl) var(--space-xl);
+    }
+    .page-head .type-hero {
+      margin-top: var(--space-md);
+    }
+    .lede {
+      margin-top: var(--space-lg);
+      max-width: 54ch;
+      font-family: var(--font-serif);
+      font-size: var(--text-corps);
+      line-height: 1.4;
+    }
+    .lede em {
+      color: var(--accent);
+    }
+    .note {
+      margin-bottom: var(--space-lg);
+      color: var(--muted);
+      max-width: 62ch;
+    }
+    .formats {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-lg);
+      align-items: end;
+    }
+    .format-frame {
+      aspect-ratio: var(--ratio);
+      max-height: 200px;
+      margin-inline: auto;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+      background: var(--surface-tint);
+    }
+    .format-name {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      margin: var(--space-md) 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5em;
+    }
+    .format-dim {
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+      color: var(--muted);
+    }
+    .format-role {
+      margin: 0.3em 0 0;
+      color: var(--muted);
+      max-width: 40ch;
+    }
+    .regles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-lg);
+      margin-bottom: var(--space-lg);
+    }
+    .regle {
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+    }
+    .regle-t {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      margin: 0;
+    }
+    .regle-d {
+      margin: 0.5em 0 0;
+      color: var(--muted);
+    }
+    .galerie {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-lg);
+    }
+    .galerie--wide {
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    }
+    .galerie-item img {
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+    }
+    .galerie-nom {
+      margin: var(--space-sm) 0 0;
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .galerie-intention {
+      margin: 0.25em 0 0;
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      line-height: 1.3;
+    }
+  </style>
+</Base>

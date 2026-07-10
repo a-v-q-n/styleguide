@@ -2,15 +2,18 @@
 // Sous-nav de la section Média : les styles d'image (le langage), puis les supports (les canaux).
 const groups = [
   {
-    label: "Styles d'image",
+    label: "Images générées",
     items: [
       { href: "/media/photo", label: "Image photo" },
       { href: "/media/schema", label: "Image schéma" },
     ],
   },
   {
-    label: "Supports",
-    items: [{ href: "/media/formats-sociaux", label: "Formats sociaux" }],
+    label: "Compositions",
+    items: [
+      { href: "/media/formats-sociaux", label: "Formats sociaux" },
+      { href: "/media/ressources", label: "Ressources" },
+    ],
   },
 ];
 const here = Astro.url.pathname.replace(/\/+$/, "") || "/";

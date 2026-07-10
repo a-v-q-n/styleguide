@@ -15,8 +15,10 @@ const required = [
   "media/photo/index.html",
   "media/formats-sociaux/index.html",
   "media/schema/index.html",
+  "media/ressources/index.html",
   "doctrine/formats-sociaux.md",
   "doctrine/da-schema.md",
+  "doctrine/ressources.md",
   "tokens.json",
   "tokens.css",
   "llms.txt",
@@ -25,6 +27,7 @@ const required = [
   "assets/logo/logo-noir.svg",
   "assets/exemples/photo/admin-deborde.jpg",
   "assets/exemples/schema/agent-skills-tools.jpg",
+  "assets/exemples/ressource/maquette-sidebar.png",
   "favicon.svg",
 ];
 

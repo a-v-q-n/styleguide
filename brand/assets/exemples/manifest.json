@@ -103,5 +103,14 @@
       "intention": "L'orchestrateur boucle, les sous-agents exécutent.",
       "prompt": "Technical documentation figure explaining an orchestration loop with sub-agents: at the top, one compact mechanical gearbox unit labeled \"orchestrateur\"; below it, three small identical plain mechanical modules labeled \"sous-agents\" — simple boxes with subtle gear details, absolutely no robots, no arms, no characters. Thin lines dispatch work downward from the orchestrator to the modules and return results upward. A large circular arrow path around the whole cycle, labeled \"la boucle\", drawn in vermilion (#E0542B) — the only vermilion element. Small reference letters. No other labels. Precise fine ink lineart on warm cream paper (#FAF8F3), warm dark ink (#211C17). Simple mechanical objects drawn with thin lines and light hatching — the charm of an old technical drawing, without any characters, figures or robots. Small lowercase French technical annotations with thin leader lines, only labels that carry meaning. Generous margins and negative space. No border, no frame, no cartouche, no ornaments, flat scan look, not a photograph of a document, no 3D render, no gradients."
     }
+  ],
+  "cover": [
+    { "fichier": "ressource/cover-bien-formuler.png", "nom": "bien-formuler", "accroche": "Les 4 principes pour bien formuler sa demande à l'IA.", "gabarit": "creer-une-cover-ressource/templates/cover-defaut.html" },
+    { "fichier": "ressource/cover-commandes.png", "nom": "commandes-cheatsheet", "accroche": "Les commandes Claude Code.", "gabarit": "creer-une-cover-ressource/templates/cover-defaut.html" }
+  ],
+  "maquette": [
+    { "fichier": "ressource/maquette-sidebar.png", "nom": "sidebar", "intention": "La barre latérale : la navigation qui reste.", "gabarit": "creer-une-illustration-ui/templates/maquette.html" },
+    { "fichier": "ressource/maquette-modale.png", "nom": "modale", "intention": "La modale : décider avant de continuer.", "gabarit": "creer-une-illustration-ui/templates/maquette.html" },
+    { "fichier": "ressource/maquette-formulaire.png", "nom": "formulaire", "intention": "Le formulaire : saisir et envoyer.", "gabarit": "creer-une-illustration-ui/templates/maquette.html" }
   ]
 }
