@@ -4,6 +4,9 @@ dist
 .env
 .DS_Store
 
+# Scratch d'orchestration agent (briefs, rapports, ledger) — jamais versionné.
+.superpowers/
+
 # Exports générés depuis brand/ — la source de vérité est brand/, jamais ces copies.
 public/tokens.css
 public/tokens.json
