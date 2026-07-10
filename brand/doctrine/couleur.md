@@ -40,6 +40,22 @@ La marque vit en deux ambiances. On ne code jamais une couleur brute dans une in
 
 Le vermillon ne bascule pas : c'est la constante qui unit les deux mondes.
 
+### Quelle ambiance pour quel produit
+
+Les deux ambiances sont également de marque ; le choix du défaut n'est pas un goût, c'est un usage.
+
+| Produit                                            | Défaut               | Exemples                     |
+| -------------------------------------------------- | -------------------- | ---------------------------- |
+| **Public** — vitrine, contenu offert aux visiteurs | **clair** (papier)   | avqn.ch, la bibliothèque     |
+| **Interne** — cockpit d'opération                  | **nocturne** (encre) | la médiathèque, les cockpits |
+
+Le public s'ouvre sur le papier : accueillant, lisible, fait pour être parcouru. L'interne vit dans
+l'encre : concentration, longues sessions, la lueur vermillon qui habite l'écran de travail.
+
+Une bascule clair/nocturne offerte à l'utilisateur est toujours permise — les deux ambiances sont la
+marque, aucune n'est un mode dégradé. Le **défaut** suit la règle ; la préférence exprimée la
+remplace.
+
 ## Les mondes-couleur
 
 Cinq recettes de lumière servent la direction artistique des images (voir `da-image`) : `ardoise`
