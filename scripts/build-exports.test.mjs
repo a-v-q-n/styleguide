@@ -48,6 +48,7 @@ function fixture() {
   });
   T("formats.json", {
     social: { portrait: { w: 1080, h: 1350, ratio: "4:5", role: "défaut, portée maximale" } },
+    ressource: { cover: { w: 1280, h: 720, ratio: "16:9", role: "bannière" } },
   });
   writeFileSync(
     join(doctrineDir, "couleur.md"),
@@ -94,6 +95,7 @@ test("buildExports génère tokens.json agrégé et parseable", () => {
   assert.equal(json.color.base.vermillon, "#E0542B");
   assert.equal(json.typography.floorPx, 32);
   assert.equal(json.formats.social.portrait.w, 1080);
+  assert.equal(json.formats.ressource.cover.h, 720);
 });
 
 test("buildExports génère llms.txt avec titre, règles et liens doctrine", () => {

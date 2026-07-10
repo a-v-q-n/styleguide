@@ -4,5 +4,19 @@
     "carre": { "w": 1080, "h": 1080, "ratio": "1:1", "role": "feed universel" },
     "story": { "w": 1080, "h": 1920, "ratio": "9:16", "role": "stories, couverture verticale" },
     "lien": { "w": 1200, "h": 627, "ratio": "16:9", "role": "aperçu de lien" }
+  },
+  "ressource": {
+    "cover": {
+      "w": 1280,
+      "h": 720,
+      "ratio": "16:9",
+      "role": "bannière de couverture, card recadrée (marges 8 %)"
+    },
+    "illustration": {
+      "w": 1600,
+      "h": 900,
+      "ratio": "16:9",
+      "role": "figure pédagogique dans la page"
+    }
   }
 }
