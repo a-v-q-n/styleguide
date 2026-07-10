@@ -13,18 +13,30 @@ On ne remplit pas un espace : on y pose ce qui compte et on laisse l'air faire l
 3. **Une hiérarchie claire.** Un point d'entrée (le hero ou le hook), un corps, un pied. L'œil sait
    toujours où commencer.
 
-## Le quadrillage
+## Surfaces & rythme
 
-Le fond de marque n'est jamais un aplat nu : il porte un **quadrillage** discret, le papier
-millimétré d'AVQN. Il change avec l'ambiance.
+Le fond n'est pas uniforme : les sections s'empilent en **bandes** pleine largeur et le fond
+**alterne** pour rythmer la lecture — sans jamais quitter la palette. Trois surfaces :
+
+- **`grid`** — le **quadrillage**, le papier millimétré d'AVQN. Réservé aux entrées (hero) et aux
+  sections techniques : présent mais jamais lu.
+- **`plain`** — un aplat propre (`--bg`). La bande calme, la plupart du temps.
+- **`tint`** — une teinte à peine décalée (`--surface-tint` : le fond d'un cran plus dense en clair,
+  d'un cran plus clair en nocturne). Elle pose une bande sans la souligner.
+
+Une bande se sépare de la précédente par un **filet fin** (`--rule`) en tête. Le rythme reste
+sobre : on ne change pas de surface à chaque section, on **ponctue** — une entrée quadrillée, des
+bandes unies, une teinte de loin en loin.
+
+Le quadrillage garde sa mécanique selon l'ambiance :
 
 | Ambiance | Couleur du trait                       | Pas                             |
 | -------- | -------------------------------------- | ------------------------------- |
 | Clair    | encre ~4 % (`--grid-clair-color`)      | 46 px (`--grid-clair-step`)     |
 | Nocturne | crème ~5,5 % (`--grid-nocturne-color`) | 120 px (`--grid-nocturne-step`) |
 
-Le rôle `--grid-color` / `--grid-step` bascule automatiquement avec le thème. Le quadrillage se pose
-en `repeating-linear-gradient` sur les deux axes, sous le contenu — présent mais jamais lu.
+Le rôle `--grid-color` / `--grid-step` bascule automatiquement avec le thème ; il se pose en
+`repeating-linear-gradient` sur les deux axes, sous le contenu.
 
 ## L'espacement
 
@@ -42,7 +54,7 @@ Le trait sépare et ferme, il ne décore pas.
 
 ## Do / Don't
 
-- **Do** : du vide maîtrisé, des alignements qui disent quelque chose, le quadrillage en fond, une
-  échelle d'espacement tenue.
-- **Don't** : remplir pour remplir, des éléments flottants sans grille, un fond nu sans quadrillage,
-  des marges au jugé.
+- **Do** : du vide maîtrisé, des alignements qui disent quelque chose, un rythme de surfaces sobre,
+  une échelle d'espacement tenue.
+- **Don't** : remplir pour remplir, des éléments flottants sans grille, changer de surface à chaque
+  section (le rythme se sent, il ne crie pas), des marges au jugé.

@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import Band from "../components/Band.astro";
 import Section from "../components/Section.astro";
 import CopyBlock from "../components/CopyBlock.astro";
 import DoctrineLink from "../components/DoctrineLink.astro";
@@ -25,14 +26,14 @@ const worlds = [
   title="DA image"
   description="« L'anticipation douce » : la direction artistique des images AVQN — grade 35mm, mondes-couleur, vermillon sémantique."
 >
-  <div class="wrap page-head">
+  <Band surface="grid" class="page-head">
     <p class="eyebrow">Direction artistique · Image</p>
     <h1 class="type-hero">« L'anticipation douce ».</h1>
     <p class="lede">
       Le monde d'un indépendant, décalé de deux degrés vers le futur, photographié comme un film 35
       mm des années 70. Crédible d'abord, futur ensuite, rétro dans le rendu.
     </p>
-  </div>
+  </Band>
 
   <Section eyebrow="01 · Le grade" title="La signature commune">
     <p class="note">
@@ -42,7 +43,7 @@ const worlds = [
     <DoctrineLink slug="da-image" />
   </Section>
 
-  <Section eyebrow="02 · Les mondes" title="Des recettes de lumière">
+  <Section eyebrow="02 · Les mondes" title="Des recettes de lumière" surface="tint">
     <p class="note">
       Une paire par visuel : une dominante et son contrepoint. C'est le contrepoint qui rend la
       couleur intelligente — un plan monochrome est un plan raté.
@@ -86,7 +87,7 @@ const worlds = [
     </div>
   </Section>
 
-  <Section eyebrow="04 · Le gabarit" title="Écrire un prompt">
+  <Section eyebrow="04 · Le gabarit" title="Écrire un prompt" surface="tint">
     <CopyBlock code={gabarit} />
     <p class="note">
       Peu d'éléments, de l'air, un premier plan travaillé. Aucun texte lisible dans l'image — les
@@ -96,8 +97,8 @@ const worlds = [
   </Section>
 
   <style>
-    .page-head {
-      padding-top: clamp(var(--space-lg), 8vh, var(--space-xl));
+    .page-head :global(.band-inner) {
+      padding-block: var(--space-2xl) var(--space-xl);
     }
     .page-head .type-hero {
       margin-top: var(--space-md);

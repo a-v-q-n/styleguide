@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import Band from "../components/Band.astro";
 import Logo from "../components/Logo.astro";
 
 const sections = [
@@ -23,39 +24,38 @@ const sections = [
 ---
 
 <Base>
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <p class="eyebrow">Livre de marque · AVQN</p>
-      <h1 class="type-hero hero-title">
-        La beauté d'AVQN, <em>documentée pour être répliquée</em>.
-      </h1>
-      <p class="hero-lede">
-        Une seule source — couleur, typographie, composants, direction artistique — pour
-        homogénéiser tous les projets. Pensée pour l'œil qui l'inspecte comme pour l'agent qui la
-        réplique.
-      </p>
-      <div class="hero-actions">
-        <a href="/fondations" class="btn btn--primary">Explorer les fondations</a>
-        <a href="/llms.txt" class="btn btn--secondary">/llms.txt — pour les agents</a>
-      </div>
+  <Band surface="grid" class="hero">
+    <p class="eyebrow">Livre de marque · AVQN</p>
+    <h1 class="type-hero hero-title">
+      La beauté d'AVQN, <em>documentée pour être répliquée</em>.
+    </h1>
+    <p class="hero-lede">
+      Une seule source — couleur, typographie, composants, direction artistique — pour homogénéiser
+      tous les projets. Pensée pour l'œil qui l'inspecte comme pour l'agent qui la réplique.
+    </p>
+    <div class="hero-actions">
+      <a href="/fondations" class="btn btn--primary">Explorer les fondations</a>
+      <a href="/llms.txt" class="btn btn--secondary">/llms.txt — pour les agents</a>
     </div>
-  </section>
+  </Band>
 
-  <section class="wrap map">
-    {
-      sections.map((s) => (
-        <a href={s.href} class="card map-card">
-          <span class="map-label type-titre">{s.label}</span>
-          <span class="map-note">{s.note}</span>
-          <span class="map-go" aria-hidden="true">
-            →
-          </span>
-        </a>
-      ))
-    }
-  </section>
+  <Band surface="plain" bordered>
+    <div class="map">
+      {
+        sections.map((s) => (
+          <a href={s.href} class="card map-card">
+            <span class="map-label type-titre">{s.label}</span>
+            <span class="map-note">{s.note}</span>
+            <span class="map-go" aria-hidden="true">
+              →
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </Band>
 
-  <section class="wrap agents">
+  <Band surface="tint" bordered>
     <div class="card card--raised agents-card">
       <div class="agents-mark" aria-hidden="true"><Logo size={40} /></div>
       <div>
@@ -75,11 +75,11 @@ const sections = [
         </ul>
       </div>
     </div>
-  </section>
+  </Band>
 
   <style>
-    .hero {
-      padding-top: clamp(var(--space-xl), 12vh, var(--space-2xl));
+    .hero :global(.band-inner) {
+      padding-block: var(--space-2xl) var(--space-xl);
     }
     .hero-title {
       margin-top: var(--space-lg);
@@ -101,7 +101,6 @@ const sections = [
     }
 
     .map {
-      margin-top: var(--space-2xl);
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: var(--space-md);
@@ -138,9 +137,6 @@ const sections = [
       color: var(--accent);
     }
 
-    .agents {
-      margin-top: var(--space-lg);
-    }
     .agents-card {
       display: flex;
       gap: var(--space-lg);

@@ -1,0 +1,17 @@
+---
+// Bande pleine largeur portant une surface : le rythme des fonds.
+//   grid  — quadrillage (hero, sections techniques)
+//   plain — fond uni
+//   tint  — teinte légèrement décalée (--surface-tint)
+interface Props {
+  surface?: "grid" | "plain" | "tint";
+  bordered?: boolean;
+  id?: string;
+  class?: string;
+}
+const { surface = "plain", bordered = false, id, class: cls } = Astro.props;
+---
+
+<section class:list={["band", `surface-${surface}`, bordered && "band--top", cls]} id={id}>
+  <div class="wrap band-inner"><slot /></div>
+</section>

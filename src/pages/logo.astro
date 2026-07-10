@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import Band from "../components/Band.astro";
 import Section from "../components/Section.astro";
 import DoctrineLink from "../components/DoctrineLink.astro";
 import Logo from "../components/Logo.astro";
@@ -19,14 +20,14 @@ const donts = [
 ---
 
 <Base title="Logo" description="Le monogramme AVQN : variantes, zone de protection, usage.">
-  <div class="wrap page-head">
+  <Band surface="grid" class="page-head">
     <p class="eyebrow">Logo</p>
     <h1 class="type-hero">Le monogramme.</h1>
     <p class="lede">
       Des aplats francs, une seule couleur, beaucoup de netteté. La DA suffit souvent à signer — le
       logo se pose franc quand il est là.
     </p>
-  </div>
+  </Band>
 
   <Section eyebrow="01 · Variantes" title="Une couleur à la fois">
     <div class="variants">
@@ -54,7 +55,7 @@ const donts = [
     <DoctrineLink slug="logo" />
   </Section>
 
-  <Section eyebrow="02 · Zone de protection" title="De l'air, tout autour">
+  <Section eyebrow="02 · Zone de protection" title="De l'air, tout autour" surface="tint">
     <figure class="clearspace">
       <div class="cs-box">
         <div class="cs-pad">
@@ -81,8 +82,8 @@ const donts = [
   </Section>
 
   <style>
-    .page-head {
-      padding-top: clamp(var(--space-lg), 8vh, var(--space-xl));
+    .page-head :global(.band-inner) {
+      padding-block: var(--space-2xl) var(--space-xl);
     }
     .page-head .type-hero {
       margin-top: var(--space-md);

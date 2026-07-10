@@ -1,24 +1,22 @@
 ---
+import Band from "./Band.astro";
 interface Props {
   eyebrow: string;
   title: string;
   id?: string;
+  surface?: "grid" | "plain" | "tint";
+  bordered?: boolean;
 }
-const { eyebrow, title, id } = Astro.props;
+const { eyebrow, title, id, surface = "plain", bordered = true } = Astro.props;
 ---
 
-<section class="section" id={id}>
-  <div class="wrap">
-    <p class="eyebrow">{eyebrow}</p>
-    <h2 class="type-titre section-title">{title}</h2>
-    <div class="section-body"><slot /></div>
-  </div>
-</section>
+<Band surface={surface} bordered={bordered} id={id}>
+  <p class="eyebrow">{eyebrow}</p>
+  <h2 class="type-titre section-title">{title}</h2>
+  <div class="section-body"><slot /></div>
+</Band>
 
 <style>
-  .section {
-    padding-top: var(--space-2xl);
-  }
   .section-title {
     margin-top: var(--space-md);
     max-width: 22ch;

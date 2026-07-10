@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import Band from "../components/Band.astro";
 import Section from "../components/Section.astro";
 import Swatch from "../components/Swatch.astro";
 import CopyToken from "../components/CopyToken.astro";
@@ -55,14 +56,14 @@ const elevationEntries = Object.entries(elevation);
   title="Fondations"
   description="Couleur, typographie, espacement, radius, élévation, grilles et lueurs — les tokens du socle AVQN."
 >
-  <div class="wrap page-head">
+  <Band surface="grid" class="page-head">
     <p class="eyebrow">Fondations</p>
     <h1 class="type-hero">Le socle, valeur par valeur.</h1>
     <p class="lede">
       Chaque token porte son nom : clique une valeur pour la copier. C'est la même source que le
       site consomme et que les agents lisent.
     </p>
-  </div>
+  </Band>
 
   <Section eyebrow="01 · Couleur" title="La palette">
     <div class="grid-swatch">
@@ -84,7 +85,7 @@ const elevationEntries = Object.entries(elevation);
     <DoctrineLink slug="couleur" />
   </Section>
 
-  <Section eyebrow="02 · Typographie" title="Quatre voix, une gamme">
+  <Section eyebrow="02 · Typographie" title="Quatre voix, une gamme" surface="tint">
     <div class="specimens">
       {
         typeRows.map((r) => (
@@ -135,7 +136,7 @@ const elevationEntries = Object.entries(elevation);
     <DoctrineLink slug="layout-grilles" />
   </Section>
 
-  <Section eyebrow="04 · Radius & élévation" title="Coins nets, ombres basses">
+  <Section eyebrow="04 · Radius & élévation" title="Coins nets, ombres basses" surface="tint">
     <div class="duo">
       <div>
         <h3 class="type-titre sub">Radius</h3>
@@ -173,7 +174,31 @@ const elevationEntries = Object.entries(elevation);
     <DoctrineLink slug="lueurs" />
   </Section>
 
-  <Section eyebrow="05 · Grilles & lueurs" title="Le papier millimétré, l'encre habitée">
+  <Section
+    eyebrow="05 · Surfaces, grilles & lueurs"
+    title="Le papier millimétré, l'encre habitée"
+    surface="grid"
+  >
+    <div class="surfaces-demo">
+      <figure class="sfc">
+        <div class="sfc-box surface-plain"></div>
+        <figcaption><strong>plain</strong><CopyToken value=".surface-plain" /></figcaption>
+      </figure>
+      <figure class="sfc">
+        <div class="sfc-box surface-tint"></div>
+        <figcaption>
+          <strong>tint</strong><CopyToken value="var(--surface-tint)" label="--surface-tint" />
+        </figcaption>
+      </figure>
+      <figure class="sfc">
+        <div class="sfc-box surface-grid"></div>
+        <figcaption><strong>grid</strong><CopyToken value=".surface-grid" /></figcaption>
+      </figure>
+    </div>
+    <p class="note">
+      Les sections alternent ces trois surfaces pour rythmer la lecture, séparées par un filet fin.
+      On ponctue, on ne change pas de fond à chaque bloc.
+    </p>
     <div class="duo">
       <figure class="demo demo-grid">
         <div class="demo-canvas grid-clair"></div>
@@ -198,8 +223,8 @@ const elevationEntries = Object.entries(elevation);
   </Section>
 
   <style>
-    .page-head {
-      padding-top: clamp(var(--space-lg), 8vh, var(--space-xl));
+    .page-head :global(.band-inner) {
+      padding-block: var(--space-2xl) var(--space-xl);
     }
     .page-head .type-hero {
       margin-top: var(--space-md);
@@ -383,6 +408,41 @@ const elevationEntries = Object.entries(elevation);
       color: var(--muted);
       font-family: var(--font-mono);
       font-size: var(--text-meta);
+    }
+
+    .surfaces-demo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+    .sfc {
+      margin: 0;
+      display: grid;
+      gap: 0.6em;
+    }
+    .sfc-box {
+      height: 96px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--rule);
+    }
+    .sfc figcaption {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6em;
+    }
+    .sfc figcaption strong {
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: var(--text-meta);
+      font-weight: 600;
+    }
+    @media (max-width: 640px) {
+      .surfaces-demo {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 720px) {

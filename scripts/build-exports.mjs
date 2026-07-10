@@ -94,6 +94,8 @@ function renderCss(t) {
   L.push(`  --accent: var(--color-vermillon);`);
   L.push(`  --grid-color: var(--grid-clair-color);`);
   L.push(`  --grid-step: var(--grid-clair-step);`);
+  // Teinte de bande — dérivée : suit l'ambiance (papier un cran plus dense, encre un cran plus claire).
+  L.push(`  --surface-tint: color-mix(in srgb, var(--fg) 3.5%, var(--bg));`);
   L.push("}");
   L.push(`[data-theme="night"] {`);
   L.push(`  --bg: var(--color-ink);`);

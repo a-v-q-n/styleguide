@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import Band from "../components/Band.astro";
 import Section from "../components/Section.astro";
 import CopyToken from "../components/CopyToken.astro";
 import DoctrineLink from "../components/DoctrineLink.astro";
@@ -9,7 +10,7 @@ import DoctrineLink from "../components/DoctrineLink.astro";
   title="Composants"
   description="La charte AVQN portée à l'interface : boutons, cartes, gestes-signature, en clair et en nocturne."
 >
-  <div class="wrap page-head">
+  <Band surface="grid" class="page-head">
     <p class="eyebrow">Composants</p>
     <h1 class="type-hero">La charte, en interface.</h1>
     <p class="lede">
@@ -17,7 +18,7 @@ import DoctrineLink from "../components/DoctrineLink.astro";
       >) : bascule l'ambiance, rien ne change dans le code. Chaque brique porte sa classe,
       cliquable.
     </p>
-  </div>
+  </Band>
 
   <Section eyebrow="01 · Boutons" title="Une forme, trois rangs">
     <div class="row">
@@ -38,7 +39,7 @@ import DoctrineLink from "../components/DoctrineLink.astro";
     <DoctrineLink slug="composants-web" />
   </Section>
 
-  <Section eyebrow="02 · Cartes" title="Des surfaces sobres">
+  <Section eyebrow="02 · Cartes" title="Des surfaces sobres" surface="tint">
     <div class="row cards">
       <article class="card">
         <p class="eyebrow">Recette</p>
@@ -82,7 +83,7 @@ import DoctrineLink from "../components/DoctrineLink.astro";
     </div>
   </Section>
 
-  <Section eyebrow="04 · Champs & liens" title="Saisie et navigation">
+  <Section eyebrow="04 · Champs & liens" title="Saisie et navigation" surface="tint">
     <div class="row form-demo">
       <label class="field">
         <span class="field-label">Adresse e-mail</span>
@@ -97,8 +98,8 @@ import DoctrineLink from "../components/DoctrineLink.astro";
   </Section>
 
   <style>
-    .page-head {
-      padding-top: clamp(var(--space-lg), 8vh, var(--space-xl));
+    .page-head :global(.band-inner) {
+      padding-block: var(--space-2xl) var(--space-xl);
     }
     .page-head .type-hero {
       margin-top: var(--space-md);
