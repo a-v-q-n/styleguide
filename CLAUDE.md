@@ -29,21 +29,25 @@ couleur ou une taille est en dur dans une page, c'est un bug.
 
 Ces fichiers sont **générés** (gitignorés) : on n'édite jamais les copies, on édite `brand/`.
 
-## La boucle
+## Dev local
+
+Aucun service, aucune base, aucun secret : le repo tourne seul.
 
 ```bash
+npm install
+npm run dev       # exports + serveur Astro sur http://localhost:4321
 npm run exports   # régénère src/styles/tokens.css + public/{tokens.*,llms.txt,doctrine/*} depuis brand/
-npm run dev       # exports + serveur de dev
 npm run build     # exports + astro build + smoke (dist/ prêt à servir)
-npm run gate      # check + format:check + build — vert avant tout commit
+npm run gate      # check + format:check + test + build — vert avant tout commit
 ```
 
 ## Déploiement
 
 **Mono-palier** : `push main` → CI construit l'image (`ghcr.io/a-v-q-n/styleguide:sha-<12>`) →
 Coolify (mode service) la pull et sert `styleguide.avqn.ch`. Coolify ne build jamais. `/healthz.json`
-porte le `GIT_SHA` : le deploy n'est vert que quand la prod répond avec ce sha. CI déléguée aux
-workflows partagés d'`avqn-dev`.
+porte le `GIT_SHA` : le deploy n'est vert que quand la prod répond avec ce sha. La grammaire Coolify est
+déléguée aux workflows partagés d'`a-v-q-n/ci`
+(`uses: a-v-q-n/ci/.github/workflows/deploy.yml@main`).
 
 ## Style
 
